@@ -3,3 +3,5 @@
 # este é um projeto escolar
 
 Lucas Gomes
+
+Victor Gabriel
