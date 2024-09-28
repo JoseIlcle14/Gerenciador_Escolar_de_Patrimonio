@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from database.database import cadeira, mesa
+from database.database import CADEIRA, MESA, moveis
 
 admin_route = Blueprint('admin', __name__)
 
@@ -8,8 +8,11 @@ admin_route = Blueprint('admin', __name__)
 @admin_route.route('/<item>')
 def listar_itens(item):
 
+    for i in moveis:
+        if item == moveis[i]:
+            item = moveis[i]
 
-    return render_template('lista_item.html', item = cadeira  )
+    return render_template('lista_item.html', item = item  )
 
 
 
