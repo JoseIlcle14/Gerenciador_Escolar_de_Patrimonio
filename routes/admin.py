@@ -1,5 +1,6 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, redirect, url_for
 from database.database import CADEIRA, MESA, moveis
+from database.usuarios import USUARIOS
 
 admin_route = Blueprint('admin', __name__)
 
@@ -44,3 +45,17 @@ def deletar_item(id):
 def editar_item(id):
 
     pass
+
+@admin_route.route('/cadastrar', methods = ['GET','POST'])
+def registrar_admin():
+
+    if request.method == "GET":
+
+        return render_template('registrar.html')
+    
+    elif request.method == "POST":
+        login = request.form['login']
+        senha = request.form['senha']
+        USUARIOS.append({'login': login, 'senha': senha})
+        
+        return redirect(url_for('index'))
