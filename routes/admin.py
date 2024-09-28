@@ -45,17 +45,20 @@ def deletar_item(id):
 def editar_item(id):
 
     pass
-
+#rota para cadastrar Usuário
 @admin_route.route('/cadastrar', methods = ['GET','POST'])
 def registrar_admin():
 
+    #se a requisição for GET apenas manda a página
     if request.method == "GET":
 
         return render_template('registrar.html')
     
+    #se ele mandar algo no formulário ele envia para o DB USUÁRIOS
     elif request.method == "POST":
         login = request.form['login']
         senha = request.form['senha']
         USUARIOS.append({'login': login, 'senha': senha})
         
+        #redireciona para a página inicial
         return redirect(url_for('index'))
