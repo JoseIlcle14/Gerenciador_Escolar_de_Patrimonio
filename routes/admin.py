@@ -1,40 +1,43 @@
 from flask import render_template, request, Blueprint
+from database.database import cadeira, mesa
 
-#funções do usuário administrador
+admin_route = Blueprint('admin', __name__)
 
-@admin_route.route('/itens')
-def lista_itens():
+#////////////////funções do adiministrador////////////////#
 
-    pass
-
-
+@admin_route.route('/<item>')
+def listar_itens(item):
 
 
-@admin_route.route('/itens/<id>')
+    return render_template('lista_item.html', item = cadeira  )
+
+
+
+@admin_route.route('/item/<id>')
 def detalhe_item():
 
-    pass
 
 
+    pass            
 
-@admin_route.route('/itens/adicionar', methods = ['POST'] )
+
+@admin_route.route('/adicionar', methods = ['POST'] )
 def form_adicionar_item():
 
+
+
     pass
 
 
 
-@admin_route.route('itens/<id>/deletar', methods = ['DELETE'])
+@admin_route.route('/<id>/deletar', methods = ['DELETE'])
 def deletar_item(id):
 
     pass
 
 
 
-@admin_route.route('/itens/<id>/editar', methods = ['PUT'])
+@admin_route.route('/<id>/editar', methods = ['PUT'])
 def editar_item(id):
 
     pass
-
-
-
