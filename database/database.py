@@ -1,4 +1,3 @@
-from collections import ChainMap
 
 
 CADEIRA = [
@@ -24,7 +23,7 @@ MESA = [
 
 ]
 
-moveis = ChainMap(CADEIRA, MESA)
+
 
 
 

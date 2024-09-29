@@ -1,50 +1,79 @@
 from flask import render_template, request, Blueprint, redirect, url_for
-from database.database import CADEIRA, MESA, moveis
+from database.database import CADEIRA, MESA
 from database.usuarios import USUARIOS
 
 admin_route = Blueprint('admin', __name__)
 
 #////////////////funções do adiministrador////////////////#
 
-@admin_route.route('/<item>')
-def listar_itens(item):
+@admin_route.route('/<itens>')
+def listar_itens(itens):
 
-    for i in moveis:
-        if item == moveis[i]:
-            item = moveis[i]
+    if itens == "CADEIRA":
+        itens = CADEIRA
 
-    return render_template('lista_item.html', item = item  )
+    if itens == "MESA":
+        itens = MESA
 
-
-
-@admin_route.route('/item/<id>')
-def detalhe_item():
+    return render_template('lista_item.html', itens = itens )
 
 
 
-    pass            
+@admin_route.route('/<itens>/<int:item_id>')
+def detalhe_item(itens, item_id):
 
+    objeto = list(filter(lambda c: c['id'] == item_id, itens))[0]
 
-@admin_route.route('/adicionar', methods = ['POST'] )
-def form_adicionar_item():
-
-
-
-    pass
+    return render_template('detalhe_item.html', item = objeto)
 
 
 
-@admin_route.route('/<id>/deletar', methods = ['DELETE'])
-def deletar_item(id):
+@admin_route.route('/<itens>/adicionar', methods = ['POST'] )
+def adicionar_item(itens):
 
-    pass
+    data = request.json
+
+    novo_item = {
+        "id": len(itens) + 1,
+        "cor": data['cor'],
+        "local": data['local'],
+        "material": data['material']
+    }
+
+    itens.append(novo_item)
+
+    return render_template('item_unidade.html', novo_item = novo_item)
 
 
 
-@admin_route.route('/<id>/editar', methods = ['PUT'])
-def editar_item(id):
+@admin_route.route('/<itens>/<int:item_id>/deletar', methods = ['DELETE'])
+def deletar_item( itens,item_id):
 
-    pass
+    global CLIENTES
+    itens = [ c for c in itens if c['id'] != item_id  ]
+
+    return {'deleted': 'ok'}
+
+
+
+@admin_route.route('/<itens>/<int:item_id>/editar', methods = ['PUT'])
+def editar_item(itens, item_id):
+
+    item_editado = None
+    data = request.json
+
+    for c in itens:
+        if c['id'] == item_id:
+            c['cor'] = data['cor']
+            c['local'] = data['local']
+            c['material'] = data['material']
+
+            item_editado = c
+
+    return render_template('item_unidade.html', item_editado = item_editado)
+    
+
+
 #rota para cadastrar Usuário
 @admin_route.route('/cadastrar', methods = ['GET','POST'])
 def registrar_admin():
@@ -59,6 +88,7 @@ def registrar_admin():
         login = request.form['login']
         senha = request.form['senha']
         USUARIOS.append({'login': login, 'senha': senha})
+        print(USUARIOS)
         
         #redireciona para a página inicial
         return redirect(url_for('index'))
