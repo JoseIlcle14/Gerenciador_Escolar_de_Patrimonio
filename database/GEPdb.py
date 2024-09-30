@@ -10,12 +10,13 @@ cursor = conexao.cursor()
 
 
 def inserir_usuarios():
-    login = "jorge.silva@gmail.com"
+    login = "borge.silva@gmail.com"
     senha = "40028922"
     tipo = "Administrador"
     comando = f'insert into usuarios (login,senha,tipo) values("{login}","{senha}","{tipo}")'
     cursor.execute(comando)
     conexao.commit()
+
 def inserir_moveis():
     # id,nome,cor,material,sala
     nome = input("informe seu obejeto: ")
