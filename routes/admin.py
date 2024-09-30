@@ -9,9 +9,14 @@ admin_route = Blueprint('admin', __name__)
 @admin_route.route('/<item>')
 def listar_itens(item):
 
-    for i in moveis:
-        if item == moveis[i]:
-            item = moveis[i]
+    tabela = [CADEIRA,MESA]
+    for i in tabela:
+        palavra = str(tabela)
+        print(palavra[tabela])
+
+    for objeto in palavra:
+        if item == palavra[objeto]:
+            item = tabela[objeto]
 
     return render_template('lista_item.html', item = item  )
 
