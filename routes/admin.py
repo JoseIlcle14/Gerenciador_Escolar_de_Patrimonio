@@ -43,9 +43,37 @@ def listar_itens(itens):
 @admin_route.route('/<itens>/<int:item_id>')
 def detalhe_item(itens, item_id):
 
-    objeto = list(filter(lambda c: c['id'] == item_id, itens))[0]
+    match itens:
 
-    return render_template('detalhe_item.html', item = objeto)
+        case 'CADEIRA':
+            itens = CADEIRA
+            
+
+        case 'MESA':
+            itens = MESA
+            
+
+        case 'AR':
+            itens = AR
+            
+
+        case 'VENTILADOR':
+            itens = VENTILADOR
+            
+
+        case 'PROJETOR':
+            itens = PROJETOR 
+            
+
+        case 'LOUSA':
+            itens = LOUSA
+
+        
+    for IDs in itens:
+        if item_id == IDs:
+            item_id = IDs
+
+    return render_template('detalhe_item.html', item_id = item_id, tabela = itens)
 
 
 

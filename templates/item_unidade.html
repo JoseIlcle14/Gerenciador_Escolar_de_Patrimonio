@@ -17,6 +17,11 @@
     <td>{{ objeto.cor }}</td>
     <td>{{ objeto.local }}</td>
     <td>{{ objeto.material }}</td>
+    <button class="btn btn-secondary" c-get="{{ url_for('admin.detalhe_item') }}"
+        c-target="#exibir-cliente"
+        data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ver
+        </button>
 </tr> 
 
 </body>
