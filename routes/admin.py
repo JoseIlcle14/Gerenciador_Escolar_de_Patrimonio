@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint, redirect, url_for
-from database.database import CADEIRA, MESA
+from database.database import CADEIRA, MESA, AR, VENTILADOR, PROJETOR, LOUSA
 from database.usuarios import USUARIOS
 
 admin_route = Blueprint('admin', __name__)
@@ -9,13 +9,34 @@ admin_route = Blueprint('admin', __name__)
 @admin_route.route('/<itens>')
 def listar_itens(itens):
 
-    if itens == "CADEIRA":
-        itens = CADEIRA
+    match itens:
 
-    if itens == "MESA":
-        itens = MESA
+        case 'CADEIRA':
+            itens = CADEIRA
+            
 
-    return render_template('lista_item.html', itens = itens )
+        case 'MESA':
+            itens = MESA
+            
+
+        case 'AR':
+            itens = AR
+            
+
+        case 'VENTILADOR':
+            itens = VENTILADOR
+            
+
+        case 'PROJETOR':
+            itens = PROJETOR 
+            
+
+        case 'LOUSA':
+            itens = LOUSA
+
+    
+    return render_template('lista_item.html', tabela = itens)
+
 
 
 

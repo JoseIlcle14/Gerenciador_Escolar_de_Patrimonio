@@ -17,12 +17,15 @@
         <th scope="col">Local</th>
         <th scope="col">Material</th>
       </tr>
+      
     </thead>
     <tbody id="lista_itens">
       
-              {% for objeto in itens %}
-                  {% include 'item_unidade.html' %}
+              {% for objeto in tabela: %}
+                {% include 'item_unidade.html' %}
               {% endfor %}
+
+            
 
     </tbody>
   </table>
