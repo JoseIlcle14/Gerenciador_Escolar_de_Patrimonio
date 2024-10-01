@@ -86,7 +86,7 @@ header {
 .home{
     height: 500px;
     display: flex;
-    background: url(./img/background-img.png);
+    background: url(../icons/background-img.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px;

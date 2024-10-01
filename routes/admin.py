@@ -6,14 +6,38 @@ admin_route = Blueprint('admin', __name__)
 
 #////////////////funções do adiministrador////////////////#
 
+#código do chat
 @admin_route.route('/<itens>')
 def listar_itens(itens):
 
-    for i in moveis:
-        if item == moveis[i]:
-            item = moveis[i]
+    match itens:
+        case 'CADEIRA':
+            itens = CADEIRA
+            
 
-    return render_template('lista_item.html', itens = itens )
+        case 'MESA':
+            itens = MESA
+            
+
+        case 'AR':
+            itens = AR
+            
+
+        case 'VENTILADOR':
+            itens = VENTILADOR
+            
+
+        case 'CAMERA':
+            itens = CAMERA
+            
+
+        case 'LOUSA':
+            itens = LOUSA
+            
+
+    
+    return render_template('lista_item.html', itens=itens)
+
 
 
 

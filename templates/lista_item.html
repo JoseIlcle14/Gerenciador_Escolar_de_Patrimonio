@@ -20,9 +20,11 @@
     </thead>
     <tbody id="lista_itens">
       
-              {% for objeto in itens %}
-                  {% include 'item_unidade.html' %}
+              {% for objeto in itens: %}
+                {% include 'item_unidade.html' %}
               {% endfor %}
+
+            
 
     </tbody>
   </table>
