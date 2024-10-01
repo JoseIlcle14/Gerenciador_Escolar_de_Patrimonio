@@ -1,6 +1,5 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from database.database import CADEIRA, MESA, AR, VENTILADOR, PROJETOR, LOUSA
-from database.usuarios import USUARIOS
 
 admin_route = Blueprint('admin', __name__)
 
@@ -103,13 +102,3 @@ def registrar_admin():
     if request.method == "GET":
 
         return render_template('registrar.html')
-    
-    #se ele mandar algo no formulário ele envia para o DB USUÁRIOS
-    elif request.method == "POST":
-        login = request.form['login']
-        senha = request.form['senha']
-        USUARIOS.append({'login': login, 'senha': senha})
-        print(USUARIOS)
-        
-        #redireciona para a página inicial
-        return redirect(url_for('index'))
