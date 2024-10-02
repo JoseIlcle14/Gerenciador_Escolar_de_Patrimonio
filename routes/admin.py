@@ -2,6 +2,7 @@ from flask import render_template, request, Blueprint, redirect, url_for
 from database.database import CADEIRA, MESA, AR, VENTILADOR, PROJETOR, LOUSA
 from models import Usuarios
 from database.db import db
+from flask_login import login_user, login_required
 
 admin_route = Blueprint('admin', __name__)
 
@@ -44,41 +45,12 @@ def listar_itens(itens):
 @admin_route.route('/<itens>/<int:item_id>')
 def detalhe_item(itens, item_id):
 
-    match itens:
-
-        case 'CADEIRA':
-            itens = CADEIRA
-            
-
-        case 'MESA':
-            itens = MESA
-            
-
-        case 'AR':
-            itens = AR
-            
-
-        case 'VENTILADOR':
-            itens = VENTILADOR
-            
-
-        case 'PROJETOR':
-            itens = PROJETOR 
-            
-
-        case 'LOUSA':
-            itens = LOUSA
-
-        
-    for IDs in itens:
-        if item_id == IDs:
-            item_id = IDs
-
-    return render_template('detalhe_item.html', item_id = item_id, tabela = itens)
+    pass
 
 
 
 @admin_route.route('/<itens>/adicionar', methods = ['POST'] )
+@login_required
 def adicionar_item(itens):
 
     data = request.json
@@ -97,6 +69,7 @@ def adicionar_item(itens):
 
 
 @admin_route.route('/<itens>/<int:item_id>/deletar', methods = ['DELETE'])
+@login_required
 def deletar_item( itens,item_id):
 
     global CLIENTES
@@ -107,6 +80,7 @@ def deletar_item( itens,item_id):
 
 
 @admin_route.route('/<itens>/<int:item_id>/editar', methods = ['PUT'])
+@login_required
 def editar_item(itens, item_id):
 
     item_editado = None
@@ -123,6 +97,24 @@ def editar_item(itens, item_id):
     return render_template('item_unidade.html', item_editado = item_editado)
     
 
+@admin_route.route('/login', methods = ['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+
+        return url_for('index')
+    
+    elif request.method == 'POST':
+
+        login = request.form('login')
+        senha = request.form('senha')
+
+        user = db.session.query(Usuarios).filter_by(login = login, senha = senha).first()
+
+        if not user:
+            return 'Você não tem um login'
+        
+        login_user(user)
+        return redirect(url_for('index'))
 
 #rota para cadastrar Usuário
 @admin_route.route('/cadastrar', methods = ['GET','POST'])
@@ -141,4 +133,6 @@ def registrar_admin():
         db.session.add(novo_usuário)
         db.session.commit()
 
-        return redirect('index')        
+        login_user(novo_usuário)
+
+        return redirect(url_for('index'))        
