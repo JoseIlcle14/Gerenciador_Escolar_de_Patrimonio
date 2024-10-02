@@ -8,11 +8,7 @@ admin_route = Blueprint('admin', __name__)
 
 #////////////////funções do adiministrador////////////////#
 
-global itens
-
-@admin_route.route('/<itens>')
-def listar_itens(itens):
-
+def encontrar_tabela(itens):
 
     match itens:
 
@@ -39,21 +35,24 @@ def listar_itens(itens):
         case 'LOUSA':
             itens = LOUSA
 
+    return itens
+
+@admin_route.route('/<itens>')
+def listar_itens(itens):
+
+    tabela = encontrar_tabela(itens)
+
+    return render_template('lista_item.html', tabela = tabela)
+
+
+
+
+@admin_route.route('/itens/')
+def detalhe_item():
 
     
-    return render_template('lista_item.html', tabela = itens)
 
-
-
-
-@admin_route.route('/{itens}/<int:item_id>')
-def detalhe_item(itens, item_id):
-        
-    for IDs in itens:
-        if item_id == IDs:
-            item_id = IDs
-
-    return render_template('detalhe_item.html', item = item_id, tabela = itens)
+    return render_template('detalhe_item.html')
 
 
 
