@@ -4,11 +4,23 @@ from routes.comum import comum_route
 from models import Usuarios
 from flask_sqlalchemy import SQLAlchemy
 from database.db import db
+from flask_login import LoginManager
 
 app = Flask(__name__)
+
+app.secret_key = '12345678'
+lm = LoginManager(app)
+lm.login_view = 'login'
+
  
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)   
+
+@lm.user_loader
+def user_loader(id):
+    usuario = db.session.query(Usuarios).filter_by(id=id).first()
+    
+    return usuario
 
 app.register_blueprint(admin_route, url_prefix = '/lista')
 
