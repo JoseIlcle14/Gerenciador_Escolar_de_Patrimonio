@@ -44,8 +44,13 @@ body {
     color: var(--color--font);
 }
 
+.left--registro--image {
+    width: 30vw;
+    height: 70vh;
+}
+
 .right--registro {
-    width: 50vw;
+    width: 30vw;
     height: 50vh;
     display: flex;
     justify-content: center;
@@ -53,18 +58,19 @@ body {
 }
 
 .card--registro {
-    width: 40%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 30px 35px;
-    background: rgb(39, 110, 9);
+    padding: 45px 55px;
+    box-shadow: 0px 10px 40px #002400b6;
+    background: var(--color--font);
     border-radius: 20px;
 }
 
-.card--registro h1 {
-    color: var(--color--font);
+.card--registro h2 {
+    color: #394d1a;
     margin: 0;
 }
 
@@ -84,10 +90,16 @@ body {
     /*background a ser definido*/
     font-size: 12pt;
     outline: none;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.text--registro input:hover {
+    box-shadow: 0px 0px 7px #002400;
 }
 
 .text--registro label {
-    color: var(--color--font);
+    color: #37474F;
     margin-bottom: 10px;
 }
 
@@ -98,4 +110,5 @@ body {
 .btn--registro {
     cursor: pointer;
     font-weight: 600;
+    color: #37474F; 
 }
