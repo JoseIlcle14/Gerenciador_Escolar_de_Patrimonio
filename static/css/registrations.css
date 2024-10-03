@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+
 :root {
     --color--body: #f6f3e286;
     --color--main: #d1cccc;
@@ -8,6 +11,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
 }
 
 body {
@@ -32,6 +36,11 @@ body {
 }
 
 .left--registro h1{
+    color: white;
+    font-size: 40px;
+}
+
+.left--registro span {
     color: var(--color--font);
 }
 
@@ -44,7 +53,7 @@ body {
 }
 
 .card--registro {
-    width: 45%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,6 +69,7 @@ body {
 }
 
 .text--registro {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
