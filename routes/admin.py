@@ -141,4 +141,5 @@ def registrar_admin():
 
         login_user(novo_usuário)
 
-        return redirect(url_for('index'))        
+        return redirect(url_for('index'))      
+  

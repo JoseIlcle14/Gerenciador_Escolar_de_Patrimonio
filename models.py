@@ -8,5 +8,5 @@ class Usuarios(UserMixin, db.Model):
 
     login = db.Column(db.String(20), unique = True)
 
-    senha = db.Column(db.String(10)) 
+    senha = db.Column(db.String(10))
 

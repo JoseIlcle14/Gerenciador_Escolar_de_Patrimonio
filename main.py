@@ -8,11 +8,12 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
+#chave de segurança do projeto
 app.secret_key = '12345678'
 lm = LoginManager(app)
 lm.login_view = 'login'
 
- 
+ #cirando conexão com o banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)   
 
@@ -31,6 +32,7 @@ def index():
 
     return render_template('index.html')
 
+#criando o banco de dados
 with app.app_context():
     db.create_all()
 app.run(debug=True)
