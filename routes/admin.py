@@ -46,11 +46,10 @@ def listar_itens(itens):
 
 
 
-
 @admin_route.route('/itens/')
 def detalhe_item():
 
-    
+    cliente = list(filter(lambda c: c['id'] == cliente_id, CLIENTES))[0]
 
     return render_template('detalhe_item.html')
 
