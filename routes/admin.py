@@ -46,12 +46,16 @@ def listar_itens(itens):
 
 
 
-@admin_route.route('/itens/')
-def detalhe_item():
+@admin_route.route('/<itens>/<int:item_id>')
+def detalhe_item(itens, item_id):
 
-    cliente = list(filter(lambda c: c['id'] == cliente_id, CLIENTES))[0]
+    itens = encontrar_tabela(itens)
 
-    return render_template('detalhe_item.html')
+    for i in itens:
+        if item_id == i:
+            item_id = i
+
+    return render_template('item_detalhado.html', )
 
 
 
@@ -141,5 +145,4 @@ def registrar_admin():
 
         login_user(novo_usuário)
 
-        return redirect(url_for('index'))      
-  
+        return redirect(url_for('index'))        
