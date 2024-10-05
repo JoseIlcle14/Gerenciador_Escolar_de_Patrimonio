@@ -8,6 +8,7 @@ admin_route = Blueprint('admin', __name__)
 
 #////////////////funções do adiministrador////////////////#
 
+
 def encontrar_tabela(itens):
 
     match itens:
@@ -51,11 +52,9 @@ def detalhe_item(itens, item_id):
 
     itens = encontrar_tabela(itens)
 
-    for i in itens:
-        if item_id == i:
-            item_id = i
+    item = list(filter(lambda c: c['id'] == item_id, itens))[0]
 
-    return render_template('item_detalhado.html', )
+    return render_template('item_detalhado.html', item = item, itens=itens )
 
 
 
