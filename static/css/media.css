@@ -6,6 +6,7 @@
     --primary--color--five: #C2BBB9;
 }
 
+/*Responsividade do botão de menu*/
 @media screen and (max-width: 1170px) {
     #nav--list {
         display: none;
@@ -26,6 +27,7 @@
     }
 }
 
+/*Responsividade da grid*/
 @media (max-width: 750px) {
     .container {
         margin-left: 10px;

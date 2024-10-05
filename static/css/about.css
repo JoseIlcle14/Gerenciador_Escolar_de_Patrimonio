@@ -92,13 +92,6 @@ header {
     padding: 30px;
 }
 
-@media screen and (max-width: 768px){
-    .home img{
-        width: 30%;
-        height: 100px;
-    }
-}
-
 .home-text{
     position: relative;
     max-width: 600px;
@@ -149,6 +142,7 @@ header {
 .develops{
     background-color: black;
 }
+
 #main-title{
     text-align: center;
     color: var(--primary--color--One);
@@ -180,6 +174,23 @@ header {
     height: 400px;
     border-radius: 15px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.412);
+    cursor: pointer;
+}
+
+.card:hover{
+    transition: auto 0.7s ease;
+    box-shadow: 0 0 20px rgba(25, 170, 9, 0.414);
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--primary--color--One);
+    
+}
+
+.card hr{
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+
 }
 
 .icon{
@@ -188,13 +199,6 @@ header {
     font-size: 6rem;
     justify-content: center;
     align-items: center;
-}
-
-.card hr{
-    width: 200px;
-    margin-left: 20px;
-    margin-right: 20px;
-
 }
 
 #title{
@@ -210,12 +214,10 @@ ul{
     line-height: 2;
 }
 
-.card:hover{
-    transition: auto 0.7s ease;
-    box-shadow:0 0 20px rgba(25, 170, 9, 0.414);
-    border-style: solid;
-    border-width: 3px;
-    border-color: var(--primary--color--One);
-    
+@media screen and (max-width: 768px){
+    .home img{
+        width: 30%;
+        height: 100px;
+    }
 }
 
