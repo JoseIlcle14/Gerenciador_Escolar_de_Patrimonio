@@ -24,8 +24,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
 }
+
 .left--registro {
     width: 50vw;
     height: 50vh;
@@ -37,7 +37,7 @@ body {
 
 .left--registro h1{
     color: white;
-    font-size: 40px;
+    font-size: 30pt;
 }
 
 .left--registro span {
@@ -45,8 +45,8 @@ body {
 }
 
 .left--registro--image {
-    width: 30vw;
-    height: 70vh;
+    width: 35vw;
+    height: 70vh;  
 }
 
 .right--registro {
@@ -63,34 +63,32 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 45px 55px;
+    padding: 30px 35px;
     box-shadow: 0px 10px 40px #002400b6;
     background: var(--color--font);
     border-radius: 20px;
 }
 
 .card--registro h2 {
-    color: #394d1a;
+    color: #263411d4;
     margin: 0;
 }
 
 .text--registro {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
 }
 
 .text--registro input {
     width: 100%;
+    width: 15vw;
     border: none;
     border-radius: 10px;
-    padding: 12px;
-    /*background a ser definido*/
+    padding: 15px;
     font-size: 12pt;
     outline: none;
-    transition: 0.4s ease;
+    transition: 0.3s ease;
     cursor: pointer;
 }
 
@@ -99,16 +97,19 @@ body {
 }
 
 .text--registro label {
-    color: #37474F;
+    font-weight: 600;
+    color: #263411d4;
     margin-bottom: 10px;
 }
 
 .text--registro input::placeholder {
     color: gray;
+    font-weight: 500;
 }
 
 .btn--registro {
+    width: 100%;
     cursor: pointer;
     font-weight: 600;
-    color: #37474F; 
+    color: #263411d4;         
 }

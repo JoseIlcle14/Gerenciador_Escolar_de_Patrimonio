@@ -22,10 +22,25 @@
         transition: 0.2s ease-in-out;
     }
 
+    #mobile--menu.active {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+
+    }
+
+    #mobile--nav--list {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+    }
+
     #mobile--btn:hover {
         color: var(--primary--color--hover);
     }
 }
+
+
 
 /*Responsividade da grid*/
 @media (max-width: 750px) {
@@ -40,3 +55,31 @@
         margin: 20px 0px;
     }
 }
+
+
+
+/* Responsividade da página de registro */
+@media screen and (max-width: 950px) {
+    .card--registro {
+        width: 85%;
+    }
+}
+
+/* @media screen and (max-width: 600px) {
+    .main--registro {
+        flex-direction: column;
+    }
+    .left--registro h1 {
+        display: none;
+    }
+
+    .left--registro {
+        width: 100%;
+        height: auto;
+    }
+
+    .rigth--registro {
+        width: 100%;
+        height: auto;
+    }
+} */
