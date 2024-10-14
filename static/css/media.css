@@ -7,7 +7,7 @@
 }
 
 /*Responsividade do botão de menu*/
-@media screen and (max-width: 1170px) {
+@media only screen and (max-width: 1170px) {
     #nav--list {
         display: none;
     }
@@ -20,30 +20,52 @@
         cursor: pointer;
         color: var(--primary--color--button);
         transition: 0.2s ease-in-out;
+
     }
 
-    #mobile--menu.active {
+    #mobile--menu.active{ 
         display: flex;
         width: 100%;
         justify-content: flex-start;
-
+        background: #ffffff48;  
+        transition: all 0.4s ease-in;       
     }
 
     #mobile--nav--list {
         display: flex;
-        flex-direction: row;
-        gap: 12px;
+        list-style: none;
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
+
+    .btn--m a{
+        color: black;
+        text-decoration: none;
+        transition: all 0.1s ease-out;
     }
 
     #mobile--btn:hover {
         color: var(--primary--color--hover);
+    }
+
+    .dropDown--su {
+        list-style: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .drop--btn {
+        font-weight: 500;
+        background: var(--primary--color--hover);
+        padding: 0.5rem;
     }
 }
 
 
 
 /*Responsividade da grid*/
-@media (max-width: 750px) {
+@media (max-width: 600px) {
     .container {
         margin-left: 10px;
         margin-right: 10px;
