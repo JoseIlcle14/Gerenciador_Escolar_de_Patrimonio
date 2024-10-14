@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from routes.admin import admin_route
 from routes.comum import comum_route
-from models import Usuarios
+from models import Usuarios, Cadeira
 from flask_sqlalchemy import SQLAlchemy
 from database.db import db
 from flask_login import LoginManager
@@ -29,7 +29,11 @@ app.register_blueprint(comum_route, url_prefix = '/comum')
 
 @app.route('/')
 def index():
-
+    
+    for i in range(31201, 33201, 1000):
+        nc = Cadeira(id = i, cor = 'cinza', material = 'Ferro e Plático')
+        db.session.add(nc)
+    db.session.commit()
     return render_template('index.html')
 
 #criando o banco de dados
