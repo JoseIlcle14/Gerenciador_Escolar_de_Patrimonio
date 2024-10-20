@@ -15,6 +15,10 @@
     font-family: "Josefin Sans", sans-serif;
 }
 
+body {
+    background-color: var(--primary--color--five);
+}
+
 header {
     height: 100%;
     width: 100%;
@@ -27,7 +31,7 @@ header {
 
 .logo {
     width: 100%;
-    max-width:100px;
+    max-width: 100px;
     height: 100%;
     max-width: 100px;
     margin-top: -35px;
@@ -42,7 +46,7 @@ header {
     max-width: 105px;
 }
 
-#nav--bar{
+#nav--bar {
     width: 100%;
     display: flex;
     align-items: center;
@@ -83,141 +87,197 @@ header {
     display: none;
 }
 
-.home{
-    height: 500px;
+/*seção de início*/
+.home {
+    height: 90vh;
     display: flex;
-    background: url(../icons/background-img.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../icons/fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px;
+    border-radius: 0px 0px 40px 40px;
 }
 
-.home-text{
-    position: relative;
+.home-text {
+    display: flex;
+    flex-direction: column;
     max-width: 600px;
-    padding-left: 85px;
-    color: #131212;
-    align-items: center;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
 }
 
-.home-text h1{
+.home-text h1 {
     font-size: 4rem;
     font-weight: 900;
     padding-top: 30px;
     padding-bottom: 30px;
 }
-.home-text span{
-    color:var(--primary--color--One);
+
+.home-text span {
+    color: var(--primary--color--One);
 }
-.home-text p{
+
+.home-text p {
+    color: var(--primary--color--five);
     font-size: 30px;
 }
 
-.description {
+/*seção de benefícios*/
+.benefits {
+    padding: 20px;
     background-color: var(--primary--color--five);
-    padding: 30px;
+    display: flex;
+    justify-content: center;
+    height: 45vh;
+    gap: 12px;
+}
+
+.benefits-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 35vw;
+    padding-top: 20px;
     color: #131212;
 }
 
-.description h2{
+.benefits-text p {
+    font-size: 18px;
+}
+
+.benefits img {
+    border-radius: 15px;
+    background-color: var(--primary--color--One);
+    width: 30vw;
+    height: 40vh;
+}
+
+/*seção de descrição(motivos) */
+.description {
+    background-color: #a5a49c;
+    padding: 30px;
+    color: #131212;
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: 20px;
+}
+
+.description h1 {
     font-size: 30px;
     padding-bottom: 10px;
     text-align: center;
 }
 
-.description span{
-    color: var(--primary--color--One);
+.description span {
+    color: white;
 }
 
-.description ol{
+.description ol {
     font-size: 20px;
     padding: 20px;
     text-align: start;
+    list-style: none;
 }
 
-.description li{
+.description li {
     padding-bottom: 20px;
 }
 
-.develops{
-    background-color: black;
+/*seção de desenvolvedores*/
+.develops {
+    background-color: rgb(105, 105, 105);
+    height: 40vh;
 }
 
-#main-title{
-    text-align: center;
-    color: var(--primary--color--One);
-    padding-top: 20px;
-    padding-bottom: 10px;
+#main-title {
+    padding-left: 325px;
+    color: white;
+    padding-top: 40px;
     font-size: 30px;
 }
 
-.develops p{
+.develops p {
     color: var(--primary--color--Four);
-    text-align: center;
-    padding-bottom: 20px;
+    padding-left: 325px;
+    padding-bottom: 10px;
 }
 
-.top{
-    background-color: #131212;
-}
-
-#cards{
+.cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.card{
+.card {
     margin: 30px;
-    background-color: #131212;
+    background-color: #292929;
     width: 250px;
-    height: 400px;
+    height: 330px;
     border-radius: 15px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.412);
-    cursor: pointer;
+    transition: all 0.5s;
+    border: 3px solid #292929;
+    padding: 15px;
 }
 
-.card:hover{
-    transition: auto 0.7s ease;
-    box-shadow: 0 0 20px rgba(25, 170, 9, 0.414);
-    border-style: solid;
-    border-width: 3px;
-    border-color: var(--primary--color--One);
-    
+.card img {
+    display: block;
+    margin: auto;
+    height: 10rem;
 }
 
-.card hr{
+.card hr {
     width: 200px;
-    margin-left: 20px;
-    margin-right: 20px;
-
-}
-
-.icon{
-    padding-top: 20px;
-    display: flex;
-    font-size: 6rem;
-    justify-content: center;
     align-items: center;
 }
 
-#title{
-    text-align: center;
-    color:var(--primary--color--One);
-    padding-top: 10px;
+#title {
+    color: var(--primary--color--One);
+    padding-top: 5px;
     padding-bottom: 10px;
 }
 
-ul{
+ul {
     color: var(--primary--color--Four);
-    padding: 30px;
     line-height: 2;
+    padding-left: 15px;
+    padding-top: 5px;
 }
 
-@media screen and (max-width: 768px){
-    .home img{
-        width: 30%;
-        height: 100px;
+.card:hover {
+    scale: 1.1;
+    border: 3px solid var(--primary--color--One);
+}
+
+/*responsividade*/
+@media screen and (max-width: 700px) {
+    .home {
+        height: 70vh;
     }
-}
 
+    .home-text h1 {
+        font-size: 40px;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .benefits {
+        height: auto;
+    }
+
+    .benefits img {
+        height: 50vh;
+    }
+
+    .develops p,
+    #main-title {
+        padding-left: 20px;
+    }
+
+}
