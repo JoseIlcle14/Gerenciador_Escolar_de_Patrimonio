@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from database.db import db
 from flask_login import UserMixin
 
@@ -9,10 +10,18 @@ class Usuarios(UserMixin, db.Model):
 
     senha = db.Column(db.String(10))
 
-class Cadeira(db.Model):
+class Objetos(db.Model):
+    
+    id = db.Column(db.Integer, primary_key = True)
+    nome = db.Column(db.String(100))
+
+class Sala(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
+    nome = db.Column(db.String(30))
 
-    cor = db.Column(db.String(50))
+class Moveis(db.Model):
 
-    material = db.Column(db.String(50))
+    id = db.Column(db.Integer, primary_key = True)
+    material = db.Column(db.Integer, )
+    id_sala = db.Column(db.Integer, ForeignKey('Sala.id'))
