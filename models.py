@@ -23,5 +23,16 @@ class Sala(db.Model):
 class Moveis(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
-    material = db.Column(db.Integer, )
-    id_sala = db.Column(db.Integer, ForeignKey('Sala.id'))
+    id_sala = db.Column(db.Integer, db.ForeignKey('sala.id'))
+    id_objeto = db.Column(db.Integer, db.ForeignKey('objetos.id'))
+    material = db.Column(db.String(50))
+    cor = db.Column(db.String(20))
+
+class Eletronicos(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    id_sala = db.Column(db.Integer, db.ForeignKey('sala.id'))
+    id_objeto = db.Column(db.Integer, db.ForeignKey('objetos.id'))
+    potencia = db.Column(db.Integer)
+    consumo = db.Column(db.Integer)
+    

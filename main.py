@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from routes.admin import admin_route
 from routes.comum import comum_route
-from models import Usuarios, Objetos,Sala
+from models import Usuarios, Objetos,Moveis,Eletronicos
 from flask_sqlalchemy import SQLAlchemy
 from database.db import db
 from flask_login import LoginManager
@@ -29,17 +29,40 @@ app.register_blueprint(comum_route, url_prefix = '/comum')
 
 @app.route('/')
 def index():
-    #apagar 
-    #Cadeira.__table__.drop(db.engine)
+    #apagar uma tabela
+    #Moveis.__table__.drop(db.engine)
     #print("Tabela Objetos deletada com sucesso!")
     
-    nomes= ['','Informática 1', 'Informática 2', 'Informática 3']
-
-    for i in range(1,4):
-        nc = Sala(id = i, nome = nomes[i])
+    j = int('050201')
+    sala = int('02')
+    obj = int('05')
+    for i in range(3):
+        nc = Eletronicos(id = j, id_sala= sala, id_objeto= obj, potencia = '0.113', consumo = '3.4')
+        j += 1
         db.session.add(nc)
-    db.session.commit()
+        
 
+    db.session.commit()
+   
+    
+    """
+    #apagar uma linha
+    id = 20346
+    apagar = Moveis.query.get(id)
+
+    if apagar:
+        db.session.delete(apagar)
+        db.session.commit()
+        print('linha apagada')
+    else:
+        print('n deu crt')
+    """
+
+
+
+
+
+    
     
     return render_template('index.html')
 
