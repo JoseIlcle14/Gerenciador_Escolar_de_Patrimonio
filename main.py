@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-from routes.admin import admin_route
-from routes.comum import comum_route
+from routes.funcoes import funcoes_route
 from models import Usuarios, Objetos,Moveis,Eletronicos
 from flask_sqlalchemy import SQLAlchemy
 from database.db import db
@@ -23,9 +22,7 @@ def user_loader(id):
     
     return usuario
 
-app.register_blueprint(admin_route, url_prefix = '/lista')
-
-app.register_blueprint(comum_route, url_prefix = '/comum')
+app.register_blueprint(funcoes_route)
 
 @app.route('/')
 def index():
@@ -33,16 +30,14 @@ def index():
     #Moveis.__table__.drop(db.engine)
     #print("Tabela Objetos deletada com sucesso!")
     
-    j = int('050201')
-    sala = int('02')
-    obj = int('05')
-    for i in range(3):
-        nc = Eletronicos(id = j, id_sala= sala, id_objeto= obj, potencia = '0.113', consumo = '3.4')
-        j += 1
-        db.session.add(nc)
-        
-
-    db.session.commit()
+    # j = int('050201')
+    # sala = int('02')
+    # obj = int('05')
+    # for i in range(3):
+    #     nc = Eletronicos(id = j, id_sala= sala, id_objeto= obj, potencia = '0.113', consumo = '3.4')
+    #     j += 1
+    #     db.session.add(nc)
+    # db.session.commit()
    
     
     """
