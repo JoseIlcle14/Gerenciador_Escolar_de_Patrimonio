@@ -20,7 +20,6 @@
         cursor: pointer;
         color: var(--primary--color--button);
         transition: 0.2s ease-in-out;
-
     }
 
     #mobile--menu.active{ 
@@ -54,7 +53,7 @@
         cursor: pointer;
         margin-bottom: 10px;
     }
-
+    
     .drop--btn {
         font-weight: 500;
         background: var(--primary--color--hover);
