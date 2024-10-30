@@ -30,32 +30,39 @@ def index():
     #Moveis.__table__.drop(db.engine)
     #print("Tabela Objetos deletada com sucesso!")
     
-    # j = int('050201')
-    # sala = int('02')
-    # obj = int('05')
-    # for i in range(3):
-    #     nc = Eletronicos(id = j, id_sala= sala, id_objeto= obj, potencia = '0.113', consumo = '3.4')
-    #     j += 1
-    #     db.session.add(nc)
-    # db.session.commit()
+    j = int('060201')
+    sala = int('02')
+    obj = int('06')
+    for i in range(1):
+        nc = Eletronicos(id = j, id_sala= sala, id_objeto= obj, potencia = '0.26', consumo = '2.6')
+        j += 1
+        db.session.add(nc)
+    db.session.commit()
    
     
-    """
     #apagar uma linha
-    id = 20346
-    apagar = Moveis.query.get(id)
+    # id = 40301
+    # apagar = Eletronicos.query.get(id)
 
-    if apagar:
-        db.session.delete(apagar)
-        db.session.commit()
-        print('linha apagada')
-    else:
-        print('n deu crt')
-    """
-
-
-
-
+    # if apagar:
+    #     db.session.delete(apagar)
+    #     db.session.commit()
+    #     print('linha apagada')
+    # else:
+    #     print('n deu crt')
+    
+    #update na tabela
+    # id = 40101
+    # for i in range(2):
+    #     objeto = Eletronicos.query.get(id)
+    #     novo_idsala = 1
+    #     if objeto:
+    #         objeto.id_sala = novo_idsala
+    #         db.session.commit()
+    #         print('deu crt')
+    #     else:
+    #         print('n deu crt')
+    #     id += 1
 
     
     
