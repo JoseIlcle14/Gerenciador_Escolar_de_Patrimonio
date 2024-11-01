@@ -74,7 +74,11 @@ def editar_item(itens, item_id):
 def login():
     if request.method == 'GET':
 
+<<<<<<< HEAD
         return render_template('registrar.html')
+=======
+        return render_template("registrar.html")
+>>>>>>> 2876ff60bd70f23da1d6f1bb845c4f4a32fcfc3c
     
     elif request.method == 'POST':
 
