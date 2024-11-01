@@ -74,7 +74,7 @@ def editar_item(itens, item_id):
 def login():
     if request.method == 'GET':
 
-        return url_for('index')
+        return render_template('registrar.html')
     
     elif request.method == 'POST':
 
@@ -87,6 +87,4 @@ def login():
             return 'Você não tem um login'
         
         login_user(user)
-        return redirect(url_for('index'))
-
-       
+        return redirect(url_for('index'))     
