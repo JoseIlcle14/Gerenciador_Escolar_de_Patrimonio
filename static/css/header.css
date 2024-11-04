@@ -27,10 +27,7 @@ header {
 }
 
 .logo:hover {
-    width: 100%;
-    max-width: 100px;
-    height: 100%;
-    max-width: 105px;
+    transform: scale(1.2,1.2);
 }
 
 #nav--bar{
@@ -66,7 +63,7 @@ header {
 }
 
 .nav--item.active a:hover {
-    background-color: var(--primary--color--hover);
+   background: #517b12;
 }
 
 #mobile--btn {

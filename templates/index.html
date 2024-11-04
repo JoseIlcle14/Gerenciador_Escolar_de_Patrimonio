@@ -23,11 +23,13 @@
             
             <ul id="nav--list">
 
-                <li class="nav--item active">
-                    <a href="{{url_for('comum.sobre')}}">Sobre nós</a>
+                <li class="nav--item">
+                    <a href="{{url_for('funcoes.sobre')}}">Sobre nós</a>
                 </li>
-            
+             
                 <li class="nav--item"><a href="support.html">Suporte</a></li>
+
+                <li class="nav--item active"><a href="{{ url_for('funcoes.login') }}">login</a></li>
 
             </ul>
 
@@ -42,7 +44,7 @@
         <ul id="mobile--nav--list">
 
             <li class="btn--m">
-                <a href="{{url_for('comum.sobre')}}">Sobre nós</a>
+                <a href="{{url_for('funcoes.sobre')}}">Sobre nós</a>
             </li>
         
             <details>
@@ -54,17 +56,56 @@
         </ul>
     </div>
 
+    <div class="spacing"></div>
+
     <!--Grades referentes às opções de patrimônio no ambiente escolar -->
     <main>
 
         <div class="container">
 
-            <div class="options--tomb"> <a href="/lista/MESA"> Mesa </a> </div>
-            <div class="options--tomb"> <a href="/lista/CADEIRA"> Cadeira </a> </div>
-            <div class="options--tomb"> <a href="/lista/VENTILADOR"> Ventilador </a> </div>
-            <div class="options--tomb"> <a href="/lista/AR"> Ar-condicionado </a> </div>
-            <div class="options--tomb"> <a href="/lista/PROJETOR"> Projetor </a> </div>
-            <div class="options--tomb"> <a href="/lista/LOUSA"> Lousa </a> </div>
+            <div class="ct--center">
+                <div class="options--tomb">
+                    <a href="/1/1">
+                        <img class="img--options" src="../static/images/cadeira_escolar.png" alt="cadeira escolar">
+                    </a>
+                    <p class="description--item">CADEIRA</p>
+                </div>
+                <div class="options--tomb">
+                    <a href="/1/2">
+                        <img class="img--options" src="../static/images/mesa_escolar.png" alt="mesa escolar">
+                    </a>
+                    <p class="description--item">MESA</p>
+                </div>
+                <div class="options--tomb">
+                    <a href="/1/2">
+                        <img class="img--options" src="../static/images/projetor_escolar.png" alt="projetor escolar">
+                    </a>
+                    <p class="description--item">PROJETOR</p>
+                </div>
+                
+                <div class="options--tomb">
+                    <a href="/1/2">
+                        <img class="img--options" src="../static/images/lousa_escolar.png" alt="lousa escolar">
+                    </a>
+                    <p class="description--item">LOUSA</p>
+                </div>
+                <div class="options--tomb">
+                    <a href="/1/2">
+                        <img class="img--options" src="../static/images/ventilador_escolar.png" alt="ventilador escolar">
+                    </a>
+                    <p class="description--item">VENTILADOR</p>
+                </div>
+                <div class="options--tomb">
+                    <a href="/1/2">
+                        <img class="img--options" src="../static/images/arcondicionado_escolar.png" alt="ar-condicionado escolar">
+                    </a>
+                    <p class="description--item">AR-CONDICIONADO</p>
+                </div>
+            </div>
+
+            <!-- <div class="options--tomb"> <a href="/1/3"> Lousa </a> </div> -->
+            <!-- <div class="options--tomb"> <a href="/2/4"> Ar-condicionado </a> </div> -->
+            <!-- <div class="options--tomb"> <a href="/2/5"> Ventilador </a> </div> -->
 
         </div>
 
@@ -72,8 +113,12 @@
 
     <!--Ainda pra ser feito-->
     <footer>
-
-    </footer>
+        <div style="display: none;" > Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+        <div style="display: none;"> Ícones feitos por <a href="https://www.flaticon.com/br/autores/juicy-fish" title="juicy_fish"> juicy_fish </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+        <div style="display: none;"> Ícones feitos por <a href="https://www.flaticon.com/br/autores/xnimrodx" title="xnimrodx"> xnimrodx </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+        <div style="display: none;"> Ícones feitos por <a href="https://www.flaticon.com/br/autores/vector-stall" title="Vector Stall"> Vector Stall </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+        <div style="display: none;"> Ícones feitos por <a href="https://www.flaticon.com/br/autores/itim2101" title="itim2101"> itim2101 </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+        <div style="display: none;"> Ícones feitos por <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>    </footer>
 
 </body>
 
