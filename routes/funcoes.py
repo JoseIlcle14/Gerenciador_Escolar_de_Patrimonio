@@ -36,9 +36,9 @@ def detalhe_item(itens, item_id):
 
 
 
-@funcoes_route.route('/<itens>/adicionar', methods = ['POST'] )
+@funcoes_route.route('/<int:lista>/<int:itens>', methods = ['POST'] )
 @login_required
-def adicionar_item(itens):
+def adicionar_item():
 
     pass
 

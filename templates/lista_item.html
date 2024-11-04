@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="../static/js/modal.js" dafer></script>
+    <title>lista</title>
 </head>
 <body>
     
+  <button class="abrir_modal" onclick="document.getElementsByClassName('modal1').showModal()">Adicionar</button>
+
+  <dialog class="modal1">
+
+    <div>
+      <form action="/criar">
+
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id">
+
+        <label for="id_sala">ID da sala:</label>
+        <input type="text" id="id_sala" name="id_sala">
+
+        <label for="material">Material:</label>
+        <input type="text" id="material" name="material">
+
+        <label for="cor">Cor:</label>
+        <input type="text" id="cor" name="cor">
+
+        <label for="turma">Infor 1</label>
+        <input type="radio" name="turma">
+
+        <label for="turma">Infor 2</label>
+        <input type="radio" name="turma">
+
+        <label for="turma">Infor 3</label>
+        <input type="radio" name="turma">
+
+      </form>
+    </div>
+
+  </dialog>
+
 {% if lista == 1 %}
   <table>
       <thead>
