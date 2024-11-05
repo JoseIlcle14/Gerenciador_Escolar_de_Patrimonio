@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../static/js/modal.js" dafer></script>
+    <script src="../static/js/modal.js" defer></script>
     <title>lista</title>
 </head>
 <body>
     
-  <button class="abrir_modal" onclick="document.getElementsByClassName('modal1').showModal()">Adicionar</button>
+  <button class="abrir_modal" data-modal="modal1">Adicionar</button>
 
-  <dialog class="modal1">
-
+  <dialog id="modal1">
+    <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
       <form action="/criar">
 
