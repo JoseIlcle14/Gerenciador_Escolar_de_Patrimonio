@@ -22,12 +22,12 @@
         transition: 0.2s ease-in-out;
     }
 
-    #mobile--menu.active{ 
+    #mobile--menu.active {
         display: flex;
         width: 100%;
         justify-content: flex-start;
-        background: #ffffff48;  
-        transition: all 0.4s ease-in;       
+        background: #ffffff48;
+        transition: all 0.4s ease-in;
     }
 
     #mobile--nav--list {
@@ -38,7 +38,7 @@
         gap: 20px;
     }
 
-    .btn--m a{
+    .btn--m a {
         color: black;
         text-decoration: none;
         transition: all 0.1s ease-out;
@@ -53,7 +53,7 @@
         cursor: pointer;
         margin-bottom: 10px;
     }
-    
+
     .drop--btn {
         font-weight: 500;
         background: var(--primary--color--hover);
@@ -63,17 +63,15 @@
 
 
 
-/*Responsividade da grid*/
-@media (max-width: 600px) {
-    .container {
-        margin-left: 10px;
-        margin-right: 10px;
-        max-width: 600px;
-        height: 600px;
+/*Responsividade dos itens flex*/
+@media screen and (max-width: 600px) {
+    .spacing {
+        height: auto;
     }
 
-    main {
-        margin: 20px 0px;
+    .ct--center {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
