@@ -7,9 +7,6 @@
 </head>
 <body>
 
-
-
-
 {% if lista == 1 %}
     <tr id="moveis-{{itens.id}}"></tr>
         <th scope="row">{{ objeto.id }}</th>
@@ -30,6 +27,8 @@
         {% endif %}
 
         <td>{{ objeto.material }}</td>
+
+        <td><button>Editar</button></td>
         
     </tr> 
 
@@ -55,5 +54,7 @@
         <td>{{ objeto.consumo }}</td>
     </tr>
 {% endif %}
+
+
 
 </body>

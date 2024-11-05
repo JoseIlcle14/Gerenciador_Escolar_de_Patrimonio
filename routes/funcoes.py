@@ -5,15 +5,16 @@ from flask_login import login_user, login_required
 
 funcoes_route = Blueprint('funcoes', __name__)
 
-#////////////////funções do adiministrador////////////////#
+#////////////////funções dos usuários////////////////#
 
+# carregar a página sobre nós
 @funcoes_route.route('/sobre')
 def sobre():
     
     return render_template('sobre.html')
 
 
-
+# visualizar os objetos de determinada tabela
 @funcoes_route.route('/<int:lista>/<int:itens>')
 def listar_itens(lista, itens):
 
@@ -28,22 +29,24 @@ def listar_itens(lista, itens):
     return render_template('lista_item.html', itens = tabela, lista = lista)
 
 
-
+# visualizar os detalhes de determinado item de determinada tabela
 @funcoes_route.route('/<itens>/<int:item_id>')
 def detalhe_item(itens, item_id):
 
    pass
 
 
+#////////////////funções adicionais dos administradores////////////////#
 
-@funcoes_route.route('/<itens>/adicionar', methods = ['POST'] )
+# adicionar determinado item em determinada tabela
+@funcoes_route.route('/<int:lista>/<int:itens>', methods = ['POST'] )
 @login_required
-def adicionar_item(itens):
+def adicionar_item():
 
     pass
 
 
-
+# remover determinado item de determinada tabela
 @funcoes_route.route('/<itens>/<int:item_id>/deletar', methods = ['DELETE'])
 @login_required
 def deletar_item( itens,item_id):
@@ -51,7 +54,7 @@ def deletar_item( itens,item_id):
     pass
 
 
-
+# editar determinado item de determinada tabela
 @funcoes_route.route('/<itens>/<int:item_id>/editar', methods = ['PUT'])
 @login_required
 def editar_item(itens, item_id):
@@ -69,6 +72,8 @@ def editar_item(itens, item_id):
 
     pass
     
+    
+#////////////////login////////////////#
 
 @funcoes_route.route('/login', methods = ['GET', 'POST'])
 def login():
