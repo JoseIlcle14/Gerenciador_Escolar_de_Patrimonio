@@ -39,10 +39,10 @@ def detalhe_item(itens, item_id):
 #////////////////funções adicionais dos administradores////////////////#
 
 # adicionar determinado item em determinada tabela
-@funcoes_route.route('/<int:lista>/<int:itens>', methods = ['POST'] )
+@funcoes_route.route('/<int:lista>/<int:itens>/criar', methods = ['POST', 'GET'] )
 @login_required
 def adicionar_item():
-
+    
     pass
 
 
