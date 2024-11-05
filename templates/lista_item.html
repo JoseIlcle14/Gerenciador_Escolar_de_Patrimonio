@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../static/js/modal.js" defer></script>
-    <title>lista</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../static/js/modal.js" defer></script>
+  <title>lista</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/table.css">
+
+  <script src="../static/js/modal.js" defer></script>
+  <title>lista</title>
 </head>
+
 <body>
     
   <button class="abrir_modal" data-modal="modal1">Adicionar</button>
+
+  <button class="abrir_modal" onclick="document.getElementsByClassName('modal1').showModal()">Adicionar</button>
+
+  <dialog class="modal1">
 
   <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
@@ -41,41 +53,85 @@
 
   </dialog>
 
-{% if lista == 1 %}
-  <table>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>Cor</th>
-          <th>Local</th>
-          <th>Material</th>
-          <th>Funções</th>   
-        </tr>
-        
-{% elif lista == 2 %}
+  {% if lista == 1 %}
   <table>
     <thead>
       <tr>
         <th>id</th>
+        <th>Cor</th>
+        <th>Local</th>
+        <th>Material</th>
+        <th>Funções</th>
+      </tr>
+      
+  {% elif lista == 2 %}
+  <table>
+    <thead>
+        <tr>
+        <th>id</th>
         <th>Potência</th>
         <th>Local</th>
         <th>Consumo</th>
-        <th>Funções</th>   
-      </tr>
+        <th>Funções</th>
+       </tr>
     </thead>
-{% endif %}
-    <tbody>
-      
-              {% for objeto in itens: %}
-                {% include 'item_unidade.html' %}
-              {% endfor %}
-              
-    </tbody>
-  </table>
+  {% endif %}
+        
+
+          {% for objeto in itens: %}
+          {% if lista == 1 %}
+          <tr id="moveis-{{itens.id}}"></tr>
+          <th scope="row">{{ objeto.id }}</th>
+          <td>{{ objeto.cor }}</td>
+
+          {% if objeto.id_sala == 1 %}
+
+            <td>infor 1</td>
+
+          {% elif objeto.id_sala == 2 %}
+
+            <td>infor 2</td>
+
+          {% elif objeto.id_sala == 3 %}
+
+            <td>infor 3</td>
+
+          {% endif %}
+
+            <td>{{ objeto.material }}</td>
+
+            <td><button>Editar</button></td>
 
 
+          {% elif lista == 2 %}
+          <tr>
+            <th>{{ objeto.id }}</th>
+            <td>{{ objeto.potencia }}</td>
 
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {% if objeto.id_sala == 1 %}
+
+            <td>infor 1</td>
+
+            {% elif objeto.id_sala == 2 %}
+
+            <td>infor 2</td>
+
+            {% elif objeto.id_sala == 3 %}
+
+            <td>infor 3</td>
+
+            {% endif %}
+
+            <td>{{ objeto.consumo }}</td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -93,4 +149,5 @@
 
 
 </body>
+
 </html>
