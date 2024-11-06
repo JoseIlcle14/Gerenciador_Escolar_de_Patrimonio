@@ -26,7 +26,7 @@ def listar_itens(lista, itens):
     
     lista = lista
 
-    return render_template('lista_item.html', itens = tabela, lista = lista)
+    return render_template('lista_item.html', itens = tabela, lista = lista, tabela_id = itens)
 
 
 # visualizar os detalhes de determinado item de determinada tabela
