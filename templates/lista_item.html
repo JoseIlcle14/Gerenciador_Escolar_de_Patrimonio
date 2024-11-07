@@ -49,9 +49,8 @@
 
         <option value="2"> Infor2 </option> 
 
-        <option value="3"> Infor3 </option> 
+        <option value="3"> Infor3 </option>
 
-        
         </select>
 
         <input type="submit">
@@ -100,7 +99,10 @@
 
         <td>
           <button>Editar</button>
-          <button>Deletar</button>
+
+          <a href="/{{ objeto.id }}/Deletar">
+            <button>Deletar</button>
+          </a>
         </td>
 
         {% endfor %}
