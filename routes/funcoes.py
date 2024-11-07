@@ -15,18 +15,23 @@ def sobre():
 
 
 # visualizar os objetos de determinada tabela
-@funcoes_route.route('/<int:lista>/<int:itens>')
-def listar_itens(lista, itens):
+@funcoes_route.route('/<int:itens>')
+def listar_itens(itens):
 
-    tabela = db.session.query(Moveis).filter_by(id_objeto = itens).all()
+    global tabela_moveis
+    global tabela_eletronicos
 
-    if not tabela:
+    tabela_moveis = db.session.query(Moveis).filter_by(id_objeto = itens).all()
 
-        tabela = db.session.query(Eletronicos).filter_by(id_objeto = itens).all()    
-    
-    lista = lista
+    if tabela_moveis:
 
-    return render_template('lista_item.html', itens = tabela, lista = lista, tabela_id = itens)
+        return render_template('lista_item.html', tabela = tabela_moveis)
+
+    else:
+        
+        tabela_eletronicos = db.session.query(Eletronicos).filter_by(id_objeto = itens).all()  
+
+        return render_template('lista_item.html', tabela = tabela_eletronicos)
 
 
 # visualizar os detalhes de determinado item de determinada tabela
@@ -39,11 +44,27 @@ def detalhe_item(itens, item_id):
 #////////////////funções adicionais dos administradores////////////////#
 
 # adicionar determinado item em determinada tabela
-@funcoes_route.route('/<int:lista>/<int:itens>/criar', methods = ['POST', 'GET'] )
+@funcoes_route.route('/adicionar', methods = ['POST', 'GET'] )
 @login_required
 def adicionar_item():
     
-    pass
+    item_turma = request.form['turma']
+
+    print(item_turma)
+    # if tabela_moveis:
+
+    #     item_cor = request.get['cor']
+    #     item_material = request.get['material']
+    #     item_novo = tabela_moveis(id = item_id, id_sala = item_turma )    
+
+    # else: 
+
+    #     item_potencia = request.get['potencia']
+    #     item_consumo = request.get['consumo']
+
+    
+
+    return redirect(url_for('index'))
 
 
 # remover determinado item de determinada tabela

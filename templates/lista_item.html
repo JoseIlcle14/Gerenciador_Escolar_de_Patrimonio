@@ -15,98 +15,15 @@
 </head>
 
 <body>
-    
+
   <button class="abrir_modal" data-modal="modal1">Adicionar</button>
 
-  <!-- <button class="abrir_modal" onclick="document.getElementsByClassName('modal1').showModal()">Adicionar</button> -->
-
-  <!-- <dialog class="modal1"> -->
-
-  <!-- <dialog id="modal1">
-    <button class="fechar_modal" data-modal="modal1">X</button>
-    <div>
-      <form action="/criar">
-
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id">
-
-        <label for="id_sala">ID da sala:</label>
-        <input type="text" id="id_sala" name="id_sala">
-
-        <label for="material">Material:</label>
-        <input type="text" id="material" name="material">
-
-        <label for="cor">Cor:</label>
-        <input type="text" id="cor" name="cor">
-
-        <label for="turma">Infor 1</label>
-        <input type="radio" name="turma">
-
-        <label for="turma">Infor 2</label>
-        <input type="radio" name="turma">
-
-        <label for="turma">Infor 3</label>
-        <input type="radio" name="turma">
-
-      </form>
-    </div>
-
-  </dialog> -->
-
-  {% if lista == 1 %}
-
   <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
-      <form action="1/{{tabela_id}}/criar">
-
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id">
-
-        <label for="id_sala">ID da sala:</label>
-        <input type="text" id="id_sala" name="id_sala">
-
-        <label for="material">Material:</label>
-        <input type="text" id="material" name="material">
-
-        <label for="cor">Cor:</label>
-        <input type="text" id="cor" name="cor">
-
-        <label for="turma">Infor 1</label>
-        <input type="radio" name="turma">
-
-        <label for="turma">Infor 2</label>
-        <input type="radio" name="turma">
-
-        <label for="turma">Infor 3</label>
-        <input type="radio" name="turma">
-
-      </form>
-    </div>
-  
-  <table>
-    <thead>
-      <tr>
-        </dialog>
-        <th>id</th>
-        <th>Cor</th>
-        <th>Local</th>
-        <th>Material</th>
-        <th>Funções</th>
-      </tr>
-      
-  {% elif lista == 2 %}
-
-  <dialog id="modal1">
-    <button class="fechar_modal" data-modal="modal1">X</button>
-    <div>
-      <form action="2/{{tabela_id}}/criar">
-
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id">
-
-        <label for="id_sala">ID da sala:</label>
-        <input type="text" id="id_sala" name="id_sala">
+      <form action="/adicionar" method="post">
+        
+        {% if tabela[0].potencia %}
 
         <label for="potencia">Potência:</label>
         <input type="text" id="potencia" name="potencia">
@@ -114,74 +31,80 @@
         <label for="consumo">Consumo:</label>
         <input type="text" id="consumo" name="consumo">
 
-        <label for="turma">Infor 1</label>
-        <input type="radio" name="turma">
+        {% else %}
 
-        <label for="turma">Infor 2</label>
-        <input type="radio" name="turma">
+        <label for="material">Material:</label>
+        <input type="text" id="material" name="material">
 
-        <label for="turma">Infor 3</label>
-        <input type="radio" name="turma">
+        <label for="cor">Cor:</label>
+        <input type="text" id="cor" name="cor">
+
+        {% endif %}
+        
+        <label>Qual a turma ?</label>
+
+        <select name="turma" id="turma"> 
+
+        <option value="1"> Infor1 </option> 
+
+        <option value="2"> Infor2 </option> 
+
+        <option value="3"> Infor3 </option> 
+
+        
+        </select>
+
+        <input type="submit">
 
       </form>
     </div>
-
   </dialog>
 
   <table>
     <thead>
-        <tr>
+      <tr>
+        </dialog>
         <th>id</th>
-        <th>Potência</th>
         <th>Local</th>
+        {% if tabela[0].potencia %}
+        <th>Potencia</th>
         <th>Consumo</th>
+        {% else %}
+        <th>Cor</th>
+        <th>Material</th>
+        {% endif %}
         <th>Funções</th>
-       </tr>
-    </thead>
-  {% endif %}
+      </tr>
+
+
+        {% for objeto in tabela: %}
+        <tr id="moveis-{{tabela.id}}"></tr>
+
+        <th scope="row">{{ objeto.id }}</th>
+
+        <td>infor {{ objeto.id_sala }}</td>
+
+        {% if objeto.potencia %}
         
+        <td>{{ objeto.potencia }}</td>
 
-          {% for objeto in itens: %}
-          {% if lista == 1 %}
-          <tr id="moveis-{{itens.id}}"></tr>
-          <th scope="row">{{ objeto.id }}</th>
-          <td>{{ objeto.cor }}</td>
+        <td>{{ objeto.consumo }}</td>
 
-            <td>infor {{ objeto.id_sala }}</td>
+        {% else %}
 
-            <td>{{ objeto.material }}</td>
+        <td>{{ objeto.cor }}</td>
 
-            <td>
-                <button>Editar</button>
-              <button>Deletar</button>
-            </td>
-         
+        <td>{{ objeto.material }}</td>
 
+        {% endif %}
 
-          {% elif lista == 2 %}
-          <tr>
-            <th>{{ objeto.id }}</th>
-            <td>{{ objeto.potencia }}</td>
+        <td>
+          <button>Editar</button>
+          <button>Deletar</button>
+        </td>
 
-            {% if objeto.id_sala == 1 %}
-
-            <td>infor 1</td>
-
-            {% elif objeto.id_sala == 2 %}
-
-            <td>infor 2</td>
-
-            {% elif objeto.id_sala == 3 %}
-
-            <td>infor 3</td>
-
-            {% endif %}
-
-            <td>{{ objeto.consumo }}</td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-
+        {% endfor %}
+        
         </tbody>
       </table>
 
