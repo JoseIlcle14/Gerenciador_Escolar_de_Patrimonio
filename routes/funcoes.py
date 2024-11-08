@@ -39,7 +39,7 @@ def listar_itens(itens):
 @funcoes_route.route('/<itens>/<int:item_id>')
 def detalhe_item(itens, item_id):
 
-   pass
+    pass
 
 
 #////////////////funções adicionais dos administradores////////////////#
@@ -107,20 +107,9 @@ def deletar_item(item_id):
 
 
 # editar determinado item de determinada tabela
-@funcoes_route.route('/<itens>/<int:item_id>/editar', methods = ['PUT'])
+@funcoes_route.route('/<int:item_id>/editar', methods = ['PUT'])
 @login_required
-def editar_item(itens, item_id):
-
-    item_editado = None
-    data = request.json
-
-    for c in itens:
-        if c['id'] == item_id:
-            c['cor'] = data['cor']
-            c['local'] = data['local']
-            c['material'] = data['material']
-
-            item_editado = c
+def editar_item(item_id):
 
     pass
     

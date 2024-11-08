@@ -98,7 +98,47 @@
         {% endif %}
 
         <td>
-          <button>Editar</button>
+            <button data-modal="modal2">Editar</button>
+            <dialog id="modal2">
+              <button class="fechar_modal" data-modal="modal2">X</button>
+              <div>
+                <form action="/{{objeto.id}}/editar" method="post">
+                  
+                  {% if tabela[0].potencia %}
+          
+                  <label for="potencia">Potência:</label>
+                  <input type="text" id="potencia" name="potencia">
+          
+                  <label for="consumo">Consumo:</label>
+                  <input type="text" id="consumo" name="consumo">
+          
+                  {% else %}
+          
+                  <label for="material">Material:</label>
+                  <input type="text" id="material" name="material">
+          
+                  <label for="cor">Cor:</label>
+                  <input type="text" id="cor" name="cor">
+          
+                  {% endif %}
+                  
+                  <label>Qual a turma ?</label>
+          
+                  <select name="turma" id="turma"> 
+          
+                  <option value="1"> Infor1 </option> 
+          
+                  <option value="2"> Infor2 </option> 
+          
+                  <option value="3"> Infor3 </option>
+          
+                  </select>
+          
+                  <input type="submit">
+          
+                </form>
+              </div>
+            </dialog>
 
           <a href="/{{ objeto.id }}/Deletar">
             <button>Deletar</button>
