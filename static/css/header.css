@@ -18,7 +18,7 @@ header {
 
 .logo {
     width: 100%;
-    max-width:100px;
+    max-width: 100px;
     height: 100%;
     max-width: 100px;
     margin-top: -35px;
@@ -27,29 +27,33 @@ header {
 }
 
 .logo:hover {
-    transform: scale(1.2,1.2);
+    transform: scale(1.2, 1.2);
 }
 
-#nav--bar{
+#nav--bar {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-#nav--list {
+#nav--list, 
+#nav--list ul li {
     display: flex;
     list-style: none;
+    cursor: pointer;
     gap: 20px;
 }
 
-.nav--item a {
+.nav--item a, 
+.nav--item.item--suporte {
     text-decoration: none;
     color: var(--primary--color--hover);
     transition: 0.3s ease;
 }
 
-.nav--item a:hover {
+.nav--item a:hover, 
+.nav--item.item--suporte:hover {
     text-decoration: none;
     color: white;
 }
@@ -63,7 +67,7 @@ header {
 }
 
 .nav--item.active a:hover {
-   background: #517b12;
+    background: #517b12;
 }
 
 #mobile--btn {
@@ -74,8 +78,57 @@ header {
     display: none;
 }
 
+/* Responsividade do botão */
+@media only screen and (max-width: 1170px) {
+    #nav--list {
+        display: none;
+    }
 
+    #mobile--btn {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--primary--color--button);
+        transition: 0.2s ease-in-out;
+    }
 
+    #mobile--menu.active {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        background: #ffffff48;
+        transition: all 0.4s ease-in;
+    }
 
+    #mobile--nav--list {
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
 
+    .btn--m a {
+        color: black;
+        text-decoration: none;
+        transition: all 0.1s ease-out;
+    }
 
+    #mobile--btn:hover {
+        color: var(--primary--color--hover);
+    }
+
+    .dropDown--su {
+        list-style: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .drop--btn {
+        font-weight: 500;
+        background: var(--primary--color--hover);
+        padding: 0.5rem;
+    }
+}
