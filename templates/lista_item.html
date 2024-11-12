@@ -12,23 +12,23 @@
 </head>
 
 <body>
-    
+
   <button class="abrir_modal" data-modal="modal1">Adicionar</button>
 
-  <!-- <button class="abrir_modal" onclick="document.getElementsByClassName('modal1').showModal()">Adicionar</button> -->
-
-  <!-- <dialog class="modal1"> -->
-
-  <!-- <dialog id="modal1">
+  <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
-      <form action="/criar">
+      <form action="/adicionar" method="post">
+        
+        {% if tabela[0].potencia %}
 
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id">
+        <label for="potencia">Potência:</label>
+        <input type="text" id="potencia" name="potencia">
 
-        <label for="id_sala">ID da sala:</label>
-        <input type="text" id="id_sala" name="id_sala">
+        <label for="consumo">Consumo:</label>
+        <input type="text" id="consumo" name="consumo">
+
+        {% else %}
 
         <label for="material">Material:</label>
         <input type="text" id="material" name="material">
@@ -36,128 +36,114 @@
         <label for="cor">Cor:</label>
         <input type="text" id="cor" name="cor">
 
-        <label for="turma">Infor 1</label>
-        <input type="radio" name="turma">
+        {% endif %}
+        
+        <label>Qual a turma ?</label>
 
-        <label for="turma">Infor 2</label>
-        <input type="radio" name="turma">
+        <select name="turma" id="turma"> 
 
-        <label for="turma">Infor 3</label>
-        <input type="radio" name="turma">
+        <option value="1"> Infor1 </option> 
+
+        <option value="2"> Infor2 </option> 
+
+        <option value="3"> Infor3 </option>
+
+        </select>
+
+        <input type="submit">
 
       </form>
     </div>
+  </dialog>
 
-  </dialog> -->
-
-  {% if lista == 1 %}
   <table>
     <thead>
       <tr>
-        <dialog id="modal1">
-          <button class="fechar_modal" data-modal="modal1">X</button>
-          <div>
-            <form action="1//criar">
-      
-              <label for="id">ID:</label>
-              <input type="text" id="id" name="id">
-      
-              <label for="id_sala">ID da sala:</label>
-              <input type="text" id="id_sala" name="id_sala">
-      
-              <label for="material">Material:</label>
-              <input type="text" id="material" name="material">
-      
-              <label for="cor">Cor:</label>
-              <input type="text" id="cor" name="cor">
-      
-              <label for="turma">Infor 1</label>
-              <input type="radio" name="turma">
-      
-              <label for="turma">Infor 2</label>
-              <input type="radio" name="turma">
-      
-              <label for="turma">Infor 3</label>
-              <input type="radio" name="turma">
-      
-            </form>
-          </div>
-      
         </dialog>
         <th>id</th>
-        <th>Cor</th>
         <th>Local</th>
+        {% if tabela[0].potencia %}
+        <th>Potencia</th>
+        <th>Consumo</th>
+        {% else %}
+        <th>Cor</th>
         <th>Material</th>
+        {% endif %}
         <th>Funções</th>
       </tr>
-      
-  {% elif lista == 2 %}
-  <table>
-    <thead>
-        <tr>
-        <th>id</th>
-        <th>Potência</th>
-        <th>Local</th>
-        <th>Consumo</th>
-        <th>Funções</th>
-       </tr>
-    </thead>
-  {% endif %}
+
+
+        {% for objeto in tabela: %}
+        <tr id="moveis-{{tabela.id}}"></tr>
+
+        <th scope="row">{{ objeto.id }}</th>
+
+        <td>infor {{ objeto.id_sala }}</td>
+
+        {% if objeto.potencia %}
         
+        <td>{{ objeto.potencia }}</td>
 
-          {% for objeto in itens: %}
-          {% if lista == 1 %}
-          <tr id="moveis-{{itens.id}}"></tr>
-          <th scope="row">{{ objeto.id }}</th>
-          <td>{{ objeto.cor }}</td>
+        <td>{{ objeto.consumo }}</td>
 
-          {% if objeto.id_sala == 1 %}
+        {% else %}
 
-            <td>infor 1</td>
+        <td>{{ objeto.cor }}</td>
 
-          {% elif objeto.id_sala == 2 %}
+        <td>{{ objeto.material }}</td>
 
-            <td>infor 2</td>
+        {% endif %}
 
-          {% elif objeto.id_sala == 3 %}
+        <td>
+            <button data-modal="modal2">Editar</button>
+            <dialog id="modal2">
+              <button class="fechar_modal" data-modal="modal2">X</button>
+              <div>
+                <form action="/{{objeto.id}}/editar" method="post">
+                  
+                  {% if tabela[0].potencia %}
+          
+                  <label for="potencia">Potência:</label>
+                  <input type="text" id="potencia" name="potencia">
+          
+                  <label for="consumo">Consumo:</label>
+                  <input type="text" id="consumo" name="consumo">
+          
+                  {% else %}
+          
+                  <label for="material">Material:</label>
+                  <input type="text" id="material" name="material">
+          
+                  <label for="cor">Cor:</label>
+                  <input type="text" id="cor" name="cor">
+          
+                  {% endif %}
+                  
+                  <label>Qual a turma ?</label>
+          
+                  <select name="turma" id="turma"> 
+          
+                  <option value="1"> Infor1 </option> 
+          
+                  <option value="2"> Infor2 </option> 
+          
+                  <option value="3"> Infor3 </option>
+          
+                  </select>
+          
+                  <input type="submit">
+          
+                </form>
+              </div>
+            </dialog>
 
-            <td>infor 3</td>
+          <a href="/{{ objeto.id }}/Deletar">
+            <button>Deletar</button>
+          </a>
+        </td>
 
-          {% endif %}
-
-            <td>{{ objeto.material }}</td>
-
-            <td>
-                <button>Editar</button>
-              <button>Deletar</button>
-            </td>
-         
-
-
-          {% elif lista == 2 %}
-          <tr>
-            <th>{{ objeto.id }}</th>
-            <td>{{ objeto.potencia }}</td>
-
-            {% if objeto.id_sala == 1 %}
-
-            <td>infor 1</td>
-
-            {% elif objeto.id_sala == 2 %}
-
-            <td>infor 2</td>
-
-            {% elif objeto.id_sala == 3 %}
-
-            <td>infor 3</td>
-
-            {% endif %}
-
-            <td>{{ objeto.consumo }}</td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-
+        {% endfor %}
+        
         </tbody>
       </table>
 

@@ -15,60 +15,101 @@ def sobre():
 
 
 # visualizar os objetos de determinada tabela
-@funcoes_route.route('/<int:lista>/<int:itens>')
-def listar_itens(lista, itens):
+@funcoes_route.route('/<int:itens>')
+def listar_itens(itens):
+    global id_obj
+    id_obj = itens
+    global tabela_moveis
+    global tabela_eletronicos
 
-    tabela = db.session.query(Moveis).filter_by(id_objeto = itens).all()
+    tabela_moveis = db.session.query(Moveis).filter_by(id_objeto = itens).all()
 
-    if not tabela:
+    if tabela_moveis:
 
-        tabela = db.session.query(Eletronicos).filter_by(id_objeto = itens).all()    
-    
-    lista = lista
+        return render_template('lista_item.html', tabela = tabela_moveis)
 
-    return render_template('lista_item.html', itens = tabela, lista = lista)
+    else:
+        
+        tabela_eletronicos = db.session.query(Eletronicos).filter_by(id_objeto = itens).all()  
+
+        return render_template('lista_item.html', tabela = tabela_eletronicos)
 
 
 # visualizar os detalhes de determinado item de determinada tabela
 @funcoes_route.route('/<itens>/<int:item_id>')
 def detalhe_item(itens, item_id):
 
-   pass
+    pass
 
 
 #////////////////funções adicionais dos administradores////////////////#
 
 # adicionar determinado item em determinada tabela
-@funcoes_route.route('/<int:lista>/<int:itens>/criar', methods = ['POST', 'GET'] )
+@funcoes_route.route('/adicionar', methods = ['POST', 'GET'] )
 @login_required
 def adicionar_item():
-    
-    pass
+
+    item_tipo = id_obj
+    item_turma = request.form['turma']
+
+    if tabela_moveis:
+
+        item_cor = request.form['cor']
+        item_material = request.form['material']
+        
+        ultimo_id = db.session.query(Moveis).with_entities(Moveis.id).filter_by(id_sala = item_turma, id_objeto = item_tipo).order_by(Moveis.id.desc()).first()
+
+        id_novo = (ultimo_id[0] + 1)
+
+        item_novo = Moveis(id = id_novo, id_sala = item_turma, material = item_material, cor = item_cor, id_objeto = item_tipo )    
+        
+        db.session.add(item_novo)
+        db.session.commit()
+        
+        return redirect(url_for('index'))
+
+    else: 
+
+        item_potencia = request.get['potencia']
+        item_consumo = request.get['consumo']
+
+        ultimo_id = db.session.query(Eletronicos).with_entities(Eletronicos.id).filter_by(id_sala = item_turma, id_objeto = item_tipo).order_by(Eletronicos.id.desc()).first()
+
+        id_novo = (ultimo_id[0] + 1)
+
+        item_novo = Eletronicos(id = id_novo, id_sala = item_turma, potencia = item_potencia, consumo = item_consumo, id_objeto = item_tipo )
+
+        db.session.add(item_novo)
+        db.session.commit()
+
+    return redirect(url_for('listar_itens'))
 
 
 # remover determinado item de determinada tabela
-@funcoes_route.route('/<itens>/<int:item_id>/deletar', methods = ['DELETE'])
+@funcoes_route.route('/<int:item_id>/deletar', methods = ['DELETE'])
 @login_required
-def deletar_item( itens,item_id):
+def deletar_item(item_id):
 
-    pass
+    if tabela_moveis:
+
+        objeto_del = db.session.query(Moveis).filter_by(id = item_id)
+        db.session.delete(objeto_del)
+        db.session.commit()
+        
+        return redirect(url_for('index'))
+
+    else:
+        objeto_del = db.session.query(Eletronicos).filter_by(id = item_id)
+        db.session.delete(objeto_del)
+        db.session.commit()
+
+        return redirect(url_for('index'))
 
 
 # editar determinado item de determinada tabela
-@funcoes_route.route('/<itens>/<int:item_id>/editar', methods = ['PUT'])
+@funcoes_route.route('/<int:item_id>/editar', methods = ['PUT'])
 @login_required
-def editar_item(itens, item_id):
-
-    item_editado = None
-    data = request.json
-
-    for c in itens:
-        if c['id'] == item_id:
-            c['cor'] = data['cor']
-            c['local'] = data['local']
-            c['material'] = data['material']
-
-            item_editado = c
+def editar_item(item_id):
 
     pass
     

@@ -40,9 +40,9 @@ def index():
     # db.session.commit()
    
     
-    #apagar uma linha
-    # id = 40301
-    # apagar = Eletronicos.query.get(id)
+    # apagar uma linha
+    # id = 10148
+    # apagar = Moveis.query.get(id)
 
     # if apagar:
     #     db.session.delete(apagar)
@@ -52,19 +52,15 @@ def index():
     #     print('n deu crt')
     
     #update na tabela
-    # id = 40101
-    # for i in range(2):
-    #     objeto = Eletronicos.query.get(id)
-    #     novo_idsala = 1
-    #     if objeto:
-    #         objeto.id_sala = novo_idsala
-    #         db.session.commit()
-    #         print('deu crt')
-    #     else:
-    #         print('n deu crt')
-    #     id += 1
-
-    
+    # id = 10248
+    # objeto = Moveis.query.get(id)
+    # novo_idsala = 2
+    # if objeto:
+    #     objeto.id_sala = novo_idsala
+    #     db.session.commit()
+    #     print('deu crt')
+    # else:
+    #     print('n deu crt')
     
     return render_template('index.html')
 
