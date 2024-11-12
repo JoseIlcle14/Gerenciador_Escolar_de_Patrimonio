@@ -10,7 +10,7 @@ app = Flask(__name__)
 #chave de segurança do projeto
 app.secret_key = '12345678'
 lm = LoginManager(app)
-lm.login_view = 'login'
+lm.login_view = 'funcoes.login'
 
 #cirando conexão com o banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
