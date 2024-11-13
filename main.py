@@ -40,7 +40,7 @@ def index():
     # db.session.commit()
    
     
-    #apagar uma linha
+    # apagar uma linha
     # id = 10148
     # apagar = Moveis.query.get(id)
 

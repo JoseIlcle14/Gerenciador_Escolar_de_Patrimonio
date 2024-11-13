@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> GEP - Gestão escolar de patrimônio </title>
     <link rel="stylesheet" href="../static/css/estilo.css">
     <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/media.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,9 +17,13 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/js/script.js" defer></script>
+
+    <title> GEP - Gestão Escolar de Patrimônio </title>
+
 </head>
 
 <body>
+
     <!--Aqui se encontra o menu do site.-->
     <header>
 
@@ -32,7 +37,7 @@
                     <a href="{{url_for('funcoes.sobre')}}">Sobre nós</a>
                 </li>
 
-                <li class="nav--item"><a href="support.html">Suporte</a></li>
+                <li class="nav--item item--suporte"> Suporte </li>
 
                 <li class="nav--item active"><a href="{{ url_for('funcoes.login') }}">login</a></li>
 
@@ -45,6 +50,7 @@
         </nav>
     </header>
 
+    <!-- Versão mobile do site -->
     <div id="mobile--menu">
         <ul id="mobile--nav--list">
 
@@ -63,10 +69,11 @@
 
     <div class="spacing"></div>
 
-    <!--Grades referentes às opções de patrimônio no ambiente escolar -->
+    <!-- CORPO DO SITE - Aqui se encontra as opções de patrimônio do ambiente escolar -->
     <main>
 
         <div class="container">
+
             <div class="ct--max--width">
                 <div class="ct--center">
                     <div class="options--tomb">
@@ -112,21 +119,11 @@
                         </a>
                         <p class="description--item">PROJETOR</p>
                     </div>
-
-
-
-
                 </div>
-
-                <!-- <div class="options--tomb"> <a href="/1/3"> Lousa </a> </div> -->
-                <!-- <div class="options--tomb"> <a href="/2/4"> Ar-condicionado </a> </div> -->
-                <!-- <div class="options--tomb"> <a href="/2/5"> Ventilador </a> </div> -->
-
-            </div>
 
     </main>
 
-    <!--Ainda pra ser feito-->
+    <!-- Aqui se encontra o rodapé do site-->
     <footer>
         <div style="display: none;"> Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik"
                 title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/br/"

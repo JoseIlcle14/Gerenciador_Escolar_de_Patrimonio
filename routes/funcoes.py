@@ -39,7 +39,7 @@ def listar_itens(itens):
 @funcoes_route.route('/<int:item_id>/detalhe')
 def detalhe_item(item_id):
 
-   pass
+    pass
 
 
 #////////////////funções adicionais dos administradores////////////////#
@@ -85,7 +85,6 @@ def adicionar_item():
 
 
 # remover determinado item de determinada tabela
-@login_required
 @funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
     if tabela_moveis:
@@ -106,18 +105,17 @@ def deletar_item(item_id):
 
 
 # editar determinado item de determinada tabela
-@login_required
 @funcoes_route.route('/<int:item_id>/editar', methods = ['PUT'])
 def editar_item(item_id):
-    pass    
-    
+    pass
+        
 #////////////////login////////////////#
 
 @funcoes_route.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'GET':
 
-        return render_template('registrar.html')
+        return render_template('entrar.html')
     
     elif request.method == 'POST':
 
