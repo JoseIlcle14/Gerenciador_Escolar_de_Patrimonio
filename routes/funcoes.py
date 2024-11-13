@@ -36,8 +36,8 @@ def listar_itens(itens):
 
 
 # visualizar os detalhes de determinado item de determinada tabela
-@funcoes_route.route('/<itens>/<int:item_id>')
-def detalhe_item(itens, item_id):
+@funcoes_route.route('/<int:item_id>/detalhe')
+def detalhe_item(item_id):
 
     pass
 
@@ -45,10 +45,9 @@ def detalhe_item(itens, item_id):
 #////////////////funções adicionais dos administradores////////////////#
 
 # adicionar determinado item em determinada tabela
-@funcoes_route.route('/adicionar', methods = ['POST', 'GET'] )
 @login_required
+@funcoes_route.route('/adicionar', methods = ['POST'] )
 def adicionar_item():
-
     item_tipo = id_obj
     item_turma = request.form['turma']
 
@@ -66,12 +65,12 @@ def adicionar_item():
         db.session.add(item_novo)
         db.session.commit()
         
-        return redirect(url_for('index'))
+        return redirect(f'{item_tipo}')
 
     else: 
 
-        item_potencia = request.get['potencia']
-        item_consumo = request.get['consumo']
+        item_potencia = request.form['potencia']
+        item_consumo = request.form['consumo']
 
         ultimo_id = db.session.query(Eletronicos).with_entities(Eletronicos.id).filter_by(id_sala = item_turma, id_objeto = item_tipo).order_by(Eletronicos.id.desc()).first()
 
@@ -82,38 +81,34 @@ def adicionar_item():
         db.session.add(item_novo)
         db.session.commit()
 
-    return redirect(url_for('listar_itens'))
+        return redirect(f'{item_tipo}')
 
 
 # remover determinado item de determinada tabela
-@funcoes_route.route('/<int:item_id>/deletar', methods = ['DELETE'])
-@login_required
+@funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
-
     if tabela_moveis:
 
-        objeto_del = db.session.query(Moveis).filter_by(id = item_id)
+        objeto_del = db.session.query(Moveis).filter_by(id = item_id).first()
+
         db.session.delete(objeto_del)
         db.session.commit()
         
-        return redirect(url_for('index'))
+        return redirect(f'/{id_obj}')
 
     else:
-        objeto_del = db.session.query(Eletronicos).filter_by(id = item_id)
+        objeto_del = db.session.query(Eletronicos).filter_by(id = item_id).first()
         db.session.delete(objeto_del)
         db.session.commit()
 
-        return redirect(url_for('index'))
+        return redirect(f'/{id_obj}')
 
 
 # editar determinado item de determinada tabela
 @funcoes_route.route('/<int:item_id>/editar', methods = ['PUT'])
-@login_required
 def editar_item(item_id):
-
     pass
-    
-    
+        
 #////////////////login////////////////#
 
 @funcoes_route.route('/login', methods = ['GET', 'POST'])

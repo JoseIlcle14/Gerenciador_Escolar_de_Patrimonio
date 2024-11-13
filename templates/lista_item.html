@@ -12,10 +12,12 @@
 </head>
 
 <body>
-
   <button class="abrir_modal" data-modal="modal1">Adicionar</button>
+<<<<<<< HEAD
 
   <!-- MODAL -->
+=======
+>>>>>>> a1239f8ab60da49039aafb674c2293997a36e157
   <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
@@ -51,7 +53,7 @@
 
         </select>
 
-        <input type="submit">
+        <input type="submit" value="criar">
 
       </form>
     </div>
@@ -96,8 +98,10 @@
         {% endif %}
 
         <td>
-            <button data-modal="modal2">Editar</button>
+            <button data-modal="modal2" class="abrir_modal">Editar</button>
+
             <dialog id="modal2">
+
               <button class="fechar_modal" data-modal="modal2">X</button>
               <div>
                 <form action="/{{objeto.id}}/editar" method="post">
