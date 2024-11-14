@@ -156,7 +156,88 @@
   </table>
 
 
+<<<<<<< HEAD
   <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+=======
+        {% for objeto in tabela: %}
+        <tr id="moveis-{{tabela.id}}"></tr>
+
+        <th scope="row">{{ objeto.id }}</th>
+
+        <td>infor {{ objeto.id_sala }}</td>
+
+        {% if objeto.potencia %}
+        
+        <td>{{ objeto.potencia }}</td>
+
+        <td>{{ objeto.consumo }}</td>
+
+        {% else %}
+
+        <td>{{ objeto.cor }}</td>
+
+        <td>{{ objeto.material }}</td>
+
+        {% endif %}
+
+        <td>
+            <button data-modal="modal2" class="abrir_modal">Editar</button>
+
+            <dialog id="modal2">
+
+              <button class="fechar_modal" data-modal="modal2">X</button>
+              <div>
+                <form action="/{{objeto.id}}/editar" method="post">
+                  
+                  {% if tabela[0].potencia %}
+          
+                  <label for="potencia">Potência:</label>
+                  <input type="text" id="potencia" name="potencia">
+          
+                  <label for="consumo">Consumo:</label>
+                  <input type="text" id="consumo" name="consumo">
+          
+                  {% else %}
+          
+                  <label for="material">Material:</label>
+                  <input type="text" id="material" name="material">
+          
+                  <label for="cor">Cor:</label>
+                  <input type="text" id="cor" name="cor">
+          
+                  {% endif %}
+                  
+                  <label>Qual a turma ?</label>
+          
+                  <select name="turma" id="turma"> 
+          
+                  <option value="1"> Infor1 </option> 
+          
+                  <option value="2"> Infor2 </option> 
+          
+                  <option value="3"> Infor3 </option>
+          
+                  </select>
+          
+                  <input type="submit" value="Editar">
+          
+                </form>
+              </div>
+            </dialog>
+
+          <a href="/{{ objeto.id }}/Deletar">
+            <button>Deletar</button>
+          </a>
+        </td>
+
+        {% endfor %}
+        
+        </tbody>
+      </table>
+
+
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+>>>>>>> 1ed53e21fef38f3a9c0a30cc7bb5ca60f3af1122
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

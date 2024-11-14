@@ -1,5 +1,5 @@
-from flask import render_template, request, Blueprint, redirect, url_for
-from models import Usuarios, Objetos, Moveis, Eletronicos
+from flask import render_template, request, Blueprint, redirect, url_for,session
+from models import Usuarios,Moveis, Eletronicos
 from database.db import db
 from flask_login import login_user, login_required
 
@@ -17,20 +17,18 @@ def sobre():
 # visualizar os objetos de determinada tabela
 @funcoes_route.route('/<int:itens>')
 def listar_itens(itens):
-    global id_obj
-    id_obj = itens
-    global tabela_moveis
-    global tabela_eletronicos
+    session['id_obj'] = itens
 
     tabela_moveis = db.session.query(Moveis).filter_by(id_objeto = itens).all()
 
     if tabela_moveis:
 
+        session['tabela_mov'] = tabela_moveis
         return render_template('lista_item.html', tabela = tabela_moveis)
 
     else:
         
-        tabela_eletronicos = db.session.query(Eletronicos).filter_by(id_objeto = itens).all()  
+        tabela_eletronicos = db.session.query(Eletronicos).filter_by(id_objeto = itens).all() 
 
         return render_template('lista_item.html', tabela = tabela_eletronicos)
 
@@ -48,8 +46,9 @@ def detalhe_item(item_id):
 @login_required
 @funcoes_route.route('/adicionar', methods = ['POST'] )
 def adicionar_item():
-    item_tipo = id_obj
+    item_tipo = session.get('id_obj')
     item_turma = request.form['turma']
+    tabela_moveis = session.get('tabela_mov')
 
     if tabela_moveis:
 
@@ -69,8 +68,8 @@ def adicionar_item():
 
     else: 
 
-        item_potencia = request.form['potencia']
-        item_consumo = request.form['consumo']
+        item_potencia = request.form('potencia')
+        item_consumo = request.form('consumo')
 
         ultimo_id = db.session.query(Eletronicos).with_entities(Eletronicos.id).filter_by(id_sala = item_turma, id_objeto = item_tipo).order_by(Eletronicos.id.desc()).first()
 
@@ -87,6 +86,8 @@ def adicionar_item():
 # remover determinado item de determinada tabela
 @funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
+    tabela_moveis = session.get('tabela_mov')
+    
     if tabela_moveis:
 
         objeto_del = db.session.query(Moveis).filter_by(id = item_id).first()
@@ -105,10 +106,25 @@ def deletar_item(item_id):
 
 
 # editar determinado item de determinada tabela
-@funcoes_route.route('/<int:item_id>/editar', methods = ['PUT'])
+@funcoes_route.route('/<int:item_id>/editar', methods = ['POST'])
 def editar_item(item_id):
-    pass
+    tabela_moveis = session.get('tabela_mov')
+    id_obj = session.get('id_obj')
+
+    if tabela_moveis:
+        return redirect(f'{id_obj}')
+    else:
+
+        item = db.session.query(Eletronicos).filter_by(id=item_id).first()
+
+        item.id_sala = request.form['turma']    
+        item.potencia = request.form['potencia']
+        item.consumo = request.form['consumo']
+
+        db.session.commit()
         
+    return redirect(f'/{id_obj}')
+
 #////////////////login////////////////#
 
 @funcoes_route.route('/login', methods = ['GET', 'POST'])
