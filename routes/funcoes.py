@@ -86,17 +86,17 @@ def adicionar_item():
 @funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
     id_obj = session.get('id_obj')
-    tabela_moveis = session.get('tabela_mov')
+    tabela_moveis = request.get.args('tabela')
     
     if tabela_moveis:
 
         objeto_del = db.session.query(Moveis).filter_by(id = item_id).first()
-
+                
         db.session.delete(objeto_del)
         db.session.commit()
         
         return redirect(f'/{id_obj}')
-
+        
     else:
         objeto_del = db.session.query(Eletronicos).filter_by(id = item_id).first()
         db.session.delete(objeto_del)
