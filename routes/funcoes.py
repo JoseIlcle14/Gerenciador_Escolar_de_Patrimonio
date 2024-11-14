@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, redirect, url_for,session
+from flask import render_template, request, Blueprint, redirect, url_for,session, g
 from models import Usuarios,Moveis, Eletronicos
 from database.db import db
 from flask_login import login_user, login_required
@@ -23,7 +23,6 @@ def listar_itens(itens):
 
     if tabela_moveis:
 
-        session['tabela_mov'] = tabela_moveis
         return render_template('lista_item.html', tabela = tabela_moveis)
 
     else:
@@ -46,9 +45,9 @@ def detalhe_item(item_id):
 @login_required
 @funcoes_route.route('/adicionar', methods = ['POST'] )
 def adicionar_item():
-    item_tipo = session.get('id_obj')
+    item_tipo = session.get('id_obj')    
     item_turma = request.form['turma']
-    tabela_moveis = session.get('tabela_mov')
+    tabela_moveis = request.args.get("tabela")
 
     if tabela_moveis:
 
@@ -86,6 +85,7 @@ def adicionar_item():
 # remover determinado item de determinada tabela
 @funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
+    id_obj = session.get('id_obj')
     tabela_moveis = session.get('tabela_mov')
     
     if tabela_moveis:
