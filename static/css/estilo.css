@@ -25,6 +25,10 @@ html {
     height: 100vh;
 }
 
+.container{
+    margin-bottom:210px;
+}
+
 .container .options--tomb {
     padding: 2.5rem;
 }

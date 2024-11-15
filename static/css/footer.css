@@ -1,0 +1,55 @@
+footer {
+    background-color: rgb(19, 19, 19);
+    color: white;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+footer h2 {
+    color: #7AA637;
+    margin-top: 47px;
+}
+
+.contact {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-img {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.barra {
+    display: flex;
+    gap: 20px;
+}
+
+.contact hr {
+    width: 90vw;
+}
+
+.contact ul{
+    color: #f6f3e286;
+    line-height: 2;
+    padding-left: 15px;
+    padding-top: 5px;
+    text-align: center;
+    list-style: none;
+}
+
+.contact-img img {
+    filter: invert(100%);
+    width: 40px;
+}
+
+.barra img {
+    width: 100px;
+    filter: invert(100%);
+}

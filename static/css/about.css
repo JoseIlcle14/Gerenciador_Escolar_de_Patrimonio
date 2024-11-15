@@ -94,6 +94,7 @@ header {
     background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../icons/fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     padding: 30px;
     border-radius: 0px 0px 40px 40px;
 }
@@ -189,7 +190,7 @@ header {
 /*seção de desenvolvedores*/
 .develops {
     background-color: rgb(105, 105, 105);
-    height: 40vh;
+    height: auto;
 }
 
 #main-title {
@@ -240,7 +241,7 @@ header {
     padding-bottom: 10px;
 }
 
-ul {
+.card ul {
     color: var(--primary--color--Four);
     line-height: 2;
     padding-left: 15px;
