@@ -4,22 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/table.css">
-  
-  <title>lista</title>
+
+  <script src="../static/js/search_table.js" defer></script>
   <script src="../static/js/modal.js" defer></script>
+
+  <title>lista</title>
 </head>
 
 <body>
+  
+  <div class="search--flex">
+    <input type="number" id="search--tipping" placeholder=" buscar por id ">
+    <button class="abrir_modal search--btn" data-modal="modal1">Adicionar</button>
+  </div>
 
-  <button class="abrir_modal" data-modal="modal1">Adicionar</button>
-
+  <!-- MODAL -->
   <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
       <form action="/adicionar" method="post">
-        
+
         {% if tabela[0].potencia %}
 
         <label for="potencia">Potência:</label>
@@ -37,29 +42,29 @@
         <input type="text" id="cor" name="cor">
 
         {% endif %}
-        
+
         <label>Qual a turma ?</label>
 
-        <select name="turma" id="turma"> 
+        <select name="turma" id="turma">
 
-        <option value="1"> Infor1 </option> 
+          <option value="1"> Infor1 </option>
 
-        <option value="2"> Infor2 </option> 
+          <option value="2"> Infor2 </option>
 
-        <option value="3"> Infor3 </option>
+          <option value="3"> Infor3 </option>
 
         </select>
 
-        <input type="submit">
+        <input type="submit" value="criar">
 
       </form>
     </div>
   </dialog>
 
+  <!-- TABELA DOS ITENS -->
   <table>
     <thead>
       <tr>
-        </dialog>
         <th>id</th>
         <th>Local</th>
         {% if tabela[0].potencia %}
@@ -71,100 +76,83 @@
         {% endif %}
         <th>Funções</th>
       </tr>
+    </thead>
 
+    <tbody id="table--item">
+      {% for objeto in tabela: %}
+      <tr id="moveis-{{tabela.id}}"></tr>
 
-        {% for objeto in tabela: %}
-        <tr id="moveis-{{tabela.id}}"></tr>
+      <th scope="row">{{ objeto.id }}</th>
 
-        <th scope="row">{{ objeto.id }}</th>
+      <td>infor {{ objeto.id_sala }}</td>
 
-        <td>infor {{ objeto.id_sala }}</td>
+      {% if objeto.potencia %}
 
-        {% if objeto.potencia %}
-        
-        <td>{{ objeto.potencia }}</td>
+      <td>{{ objeto.potencia }}</td>
 
-        <td>{{ objeto.consumo }}</td>
+      <td>{{ objeto.consumo }}</td>
 
-        {% else %}
+      {% else %}
 
-        <td>{{ objeto.cor }}</td>
+      <td>{{ objeto.cor }}</td>
 
-        <td>{{ objeto.material }}</td>
+      <td>{{ objeto.material }}</td>
 
-        {% endif %}
+      {% endif %}
 
-        <td>
-            <button data-modal="modal2">Editar</button>
-            <dialog id="modal2">
-              <button class="fechar_modal" data-modal="modal2">X</button>
-              <div>
-                <form action="/{{objeto.id}}/editar" method="post">
-                  
-                  {% if tabela[0].potencia %}
-          
-                  <label for="potencia">Potência:</label>
-                  <input type="text" id="potencia" name="potencia">
-          
-                  <label for="consumo">Consumo:</label>
-                  <input type="text" id="consumo" name="consumo">
-          
-                  {% else %}
-          
-                  <label for="material">Material:</label>
-                  <input type="text" id="material" name="material">
-          
-                  <label for="cor">Cor:</label>
-                  <input type="text" id="cor" name="cor">
-          
-                  {% endif %}
-                  
-                  <label>Qual a turma ?</label>
-          
-                  <select name="turma" id="turma"> 
-          
-                  <option value="1"> Infor1 </option> 
-          
-                  <option value="2"> Infor2 </option> 
-          
-                  <option value="3"> Infor3 </option>
-          
-                  </select>
-          
-                  <input type="submit">
-          
-                </form>
-              </div>
-            </dialog>
+      <td>
+        <button data-modal="modal2" class="abrir_modal edit--btn">Editar</button>
 
-          <a href="/{{ objeto.id }}/Deletar">
-            <button>Deletar</button>
-          </a>
-        </td>
+        <dialog id="modal2">
 
-        {% endfor %}
-        
-        </tbody>
-      </table>
+          <button class="fechar_modal" data-modal="modal2">X</button>
+          <div>
+            <form action="/{{objeto.id}}/editar" method="post">
 
+              {% if tabela[0].potencia %}
 
-      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="exibir-item"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
+              <label for="potencia">Potência:</label>
+              <input type="text" id="potencia" name="potencia">
 
+              <label for="consumo">Consumo:</label>
+              <input type="text" id="consumo" name="consumo">
 
+              {% else %}
+
+              <label for="material">Material:</label>
+              <input type="text" id="material" name="material">
+
+              <label for="cor">Cor:</label>
+              <input type="text" id="cor" name="cor">
+
+              {% endif %}
+
+              <label>Qual a turma ?</label>
+
+              <select name="turma" id="turma">
+
+                <option value="1"> Infor1 </option>
+
+                <option value="2"> Infor2 </option>
+
+                <option value="3"> Infor3 </option>
+
+              </select>
+
+              <input type="submit">
+
+            </form>
+          </div>
+        </dialog>
+
+        <a href="/{{ objeto.id }}/Deletar">
+          <button class="delet--btn">Deletar</button>
+        </a>
+      </td>
+
+      {% endfor %}
+
+    </tbody>
+  </table>
 </body>
-
 </html>
