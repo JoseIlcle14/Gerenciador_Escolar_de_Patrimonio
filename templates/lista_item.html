@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../static/icons/Traced Image.svg" type="image/x-icon">
   <link rel="stylesheet" href="../static/css/table.css">
-
   <script src="../static/js/search_table.js" defer></script>
   <script src="../static/js/modal.js" defer></script>
 
@@ -13,33 +13,42 @@
 </head>
 
 <body>
-  
+
+  <a href="/">
+    <button>
+      <-- </button>
+  </a>
+
   <div class="search--flex">
     <input type="number" id="search--tipping" placeholder=" buscar por id ">
     <button class="abrir_modal search--btn" data-modal="modal1">Adicionar</button>
   </div>
 
-  <!-- MODAL -->
+  <!-- MODAL DE CRIAR -->
   <dialog id="modal1">
     <button class="fechar_modal" data-modal="modal1">X</button>
     <div>
       <form action="/adicionar" method="post">
 
-        {% if tabela[0].potencia %}
+        <label for="id">Id</label>
+        <input type="number" placeholder="Id" name="id">
 
-        <label for="potencia">Potência:</label>
-        <input type="text" id="potencia" name="potencia">
-
-        <label for="consumo">Consumo:</label>
-        <input type="text" id="consumo" name="consumo">
-
-        {% else %}
+        {% if movel %}
 
         <label for="material">Material:</label>
         <input type="text" id="material" name="material">
 
         <label for="cor">Cor:</label>
         <input type="text" id="cor" name="cor">
+
+        {% else %}
+
+        <label for="potencia">Potência:</label>
+        <input type="number" id="potencia" name="potencia">
+
+        <label for="consumo">Consumo:</label>
+        <input type="number" id="consumo" name="consumo">
+
 
         {% endif %}
 
@@ -67,12 +76,12 @@
       <tr>
         <th>id</th>
         <th>Local</th>
-        {% if tabela[0].potencia %}
-        <th>Potencia</th>
-        <th>Consumo</th>
-        {% else %}
+        {% if movel %}
         <th>Cor</th>
         <th>Material</th>
+        {% else %}
+        <th>Potencia</th>
+        <th>Consumo</th>
         {% endif %}
         <th>Funções</th>
       </tr>
@@ -80,79 +89,82 @@
 
     <tbody id="table--item">
       {% for objeto in tabela: %}
-      <tr id="moveis-{{tabela.id}}"></tr>
+      <tr>
+        <td>{{ objeto.id }}</td>
 
-      <th scope="row">{{ objeto.id }}</th>
+        <td>infor {{ objeto.id_sala }}</td>
 
-      <td>infor {{ objeto.id_sala }}</td>
+        {% if objeto.potencia %}
 
-      {% if objeto.potencia %}
+        <td>{{ objeto.potencia }}</td>
 
-      <td>{{ objeto.potencia }}</td>
+        <td>{{ objeto.consumo }}</td>
 
-      <td>{{ objeto.consumo }}</td>
+        {% else %}
 
-      {% else %}
+        <td>{{ objeto.cor }}</td>
 
-      <td>{{ objeto.cor }}</td>
+        <td>{{ objeto.material }}</td>
 
-      <td>{{ objeto.material }}</td>
+        {% endif %}
 
-      {% endif %}
+        <td>
+          <button data-modal="modal2" class="abrir_modal edit--btn">Editar {{ objeto.id }}</button>
 
-      <td>
-        <button data-modal="modal2" class="abrir_modal edit--btn">Editar</button>
+          <!-- MODAL DE EDITAR -->
+          <dialog id="modal2">
 
-        <dialog id="modal2">
+            <button class="fechar_modal" data-modal="modal2">X</button>
 
-          <button class="fechar_modal" data-modal="modal2">X</button>
-          <div>
-            <form action="/{{objeto.id}}/editar" method="post">
+            <div>
+              <form action="/{{ objeto.id }}/editar" method="post">
 
-              {% if tabela[0].potencia %}
+                {% if movel %}
+                <p>{{ objeto.id }}</p>
 
-              <label for="potencia">Potência:</label>
-              <input type="text" id="potencia" name="potencia">
+                <label for="material">Material:</label>
+                <input type="text" id="material" name="material">
 
-              <label for="consumo">Consumo:</label>
-              <input type="text" id="consumo" name="consumo">
+                <label for="cor">Cor:</label>
+                <input type="text" id="cor" name="cor">
 
-              {% else %}
+                {% else %}
 
-              <label for="material">Material:</label>
-              <input type="text" id="material" name="material">
+                <label for="potencia">Potência:</label>
+                <input type="text" id="potencia" name="potencia">
 
-              <label for="cor">Cor:</label>
-              <input type="text" id="cor" name="cor">
+                <label for="consumo">Consumo:</label>
+                <input type="text" id="consumo" name="consumo">
 
-              {% endif %}
+                {% endif %}
 
-              <label>Qual a turma ?</label>
+                <label>Qual a turma ?</label>
 
-              <select name="turma" id="turma">
+                <select name="turma" id="turma">
 
-                <option value="1"> Infor1 </option>
+                  <option value="1"> Infor1 </option>
 
-                <option value="2"> Infor2 </option>
+                  <option value="2"> Infor2 </option>
 
-                <option value="3"> Infor3 </option>
+                  <option value="3"> Infor3 </option>
 
-              </select>
+                </select>
 
-              <input type="submit">
+                <input type="submit" value="Editar">
 
-            </form>
-          </div>
-        </dialog>
+              </form>
+            </div>
+          </dialog>
 
-        <a href="/{{ objeto.id }}/Deletar">
-          <button class="delet--btn">Deletar</button>
-        </a>
-      </td>
-
+          <a href="/{{ objeto.id }}/Deletar">
+            <button class="delet--btn">Deletar</button>
+          </a>
+        </td>
+      </tr>
       {% endfor %}
 
     </tbody>
   </table>
 </body>
+
 </html>

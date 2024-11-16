@@ -30,11 +30,12 @@ def index():
     #Moveis.__table__.drop(db.engine)
     #print("Tabela Objetos deletada com sucesso!")
     
+    # adicionar item
     # sala = int('01')
     # obj = int('02')
-    # for i in range(20102):
-    #     nc = Moveis(id = i, id_sala= sala, id_objeto= obj, material = 'ferro', cor = 'azul')
-    #     db.session.add(nc)
+    # i = 20102
+    # nc = Moveis(id = i, id_sala= sala, id_objeto= obj, material = 'ferro', cor = 'azul')
+    # db.session.add(nc)
     # db.session.commit()
    
     
