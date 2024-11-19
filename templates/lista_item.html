@@ -76,19 +76,26 @@
       <tr>
         <th>id</th>
         <th>Local</th>
+
         {% if movel %}
+
         <th>Cor</th>
         <th>Material</th>
+
         {% else %}
+
         <th>Potencia</th>
         <th>Consumo</th>
+
         {% endif %}
+
         <th>Funções</th>
       </tr>
     </thead>
 
+    {% for objeto in tabela %}
     <tbody id="table--item">
-      {% for objeto in tabela: %}
+
       <tr>
         <td>{{ objeto.id }}</td>
 
@@ -119,8 +126,11 @@
             <div>
               <form action="/{{ objeto.id }}/editar" method="post">
 
-                {% if movel %}
+                <label for="id">id:</label>
+                <input type="number">
                 <p>{{ objeto.id }}</p>
+
+                {% if movel %}
 
                 <label for="material">Material:</label>
                 <input type="text" id="material" name="material">
@@ -161,7 +171,7 @@
           </a>
         </td>
       </tr>
-      {% endfor %}
+    {% endfor %}
 
     </tbody>
   </table>

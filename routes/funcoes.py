@@ -2,7 +2,6 @@ from flask import render_template, request, Blueprint, redirect, url_for,session
 from models import Usuarios,Moveis, Eletronicos
 from database.db import db
 from flask_login import login_user, login_required
-import jsonpickle
 
 funcoes_route = Blueprint('funcoes', __name__)
 
@@ -26,7 +25,6 @@ def listar_itens(itens):
     if tabela_moveis:
         
         mov = True
-        session['tabela'] = jsonpickle.encode(tabela_moveis)
 
         return render_template('lista_item.html', tabela = tabela_moveis, movel = mov)
 
@@ -82,6 +80,7 @@ def adicionar_item():
 
 
 # remover determinado item de determinada tabela
+@login_required
 @funcoes_route.route('/<int:item_id>/Deletar')
 def deletar_item(item_id):
     id_obj = session.get('id_obj')
@@ -111,10 +110,10 @@ def editar_item(item_id):
 
     if tabela_moveis:
         
-        item =  db.session.query(Moveis).filter_by(id=item_id).first()
-        item.id_sala = request.form['turma']    
-        item.material = request.form['material']
-        item.cor = request.form['cor']
+        # item =  db.session.query(Moveis).filter_by(id=item_id).first()
+        # item.id_sala = request.form['turma']    
+        # item.material = request.form['material']
+        # item.cor = request.form['cor']
         
         return redirect(f'{id_obj}')
     else:
