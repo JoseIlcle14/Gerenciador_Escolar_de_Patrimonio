@@ -4,11 +4,11 @@
     --corDeFundo-td: #bbff54db;
     --corDeFundo-btn: #91c741;
     --corButtonDelet: #3e5f0d;
-    --corButtonEdit: #005a00;  
+    --corButtonEdit: #005a00;
+    --corButtonClose: rgb(255, 54, 54);
 }
 
 * {
-    padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Josefin Sans", sans-serif;
@@ -21,6 +21,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 1.5rem;
 }
 
 .search--flex {
@@ -50,6 +51,7 @@ body {
     background-color: var(--corDeFundo-btn);
     border: none;
     border-radius: 2px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
@@ -61,15 +63,21 @@ body {
     opacity: 1.5;
 }
 
+
 .edit--btn {
     color: #fff;
     background-color: var(--corButtonEdit);
     border: none;
     border-radius: 2px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
-    margin-bottom: 0.2rem; 
+    margin-bottom: 0.2rem;
+    width: 60px;
+    max-width: 90%;
+    height: 35px;
+    max-height: 80%;
     opacity: 0.9;
     transition: 0.3s ease;
 }
@@ -83,10 +91,15 @@ body {
     background-color: var(--corButtonDelet);
     border: none;
     border-radius: 2px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
     margin-top: 0.2rem;
+    width: 70px;
+    max-width: 90%;
+    height: 35px;
+    max-height: 80%;
     opacity: 0.9;
     transition: 0.3s ease;
 }
@@ -123,4 +136,130 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ESTILIZAÇÃO DO MODAL */
+.close--modal {
+    color: #fff;
+    background-color: var(--corButtonClose);
+    border: none;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.4rem 0.4rem;
+    margin-top: 0.2rem;
+    opacity: 0.9;
+    transition: 0.3s ease;
+}
+
+@keyframes transition--modal {
+    from {
+        opacity: 0;
+        translate: 0 -100vh;
+    }
+    
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes transition--modal--backdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+dialog::backdrop {
+    background-color:rgba(0, 0, 0, 0.6); 
+    animation: transition--modal--backdrop 0.8s ease-in-out;
+}
+
+dialog {
+    animation: transition--modal 0.8s ease-in-out;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+}
+
+.modal--all {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 90%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: rgba(75, 75, 75, 0.984);
+}
+
+.modal--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #bbff54db;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.modal--header h2 {
+    color: #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+.modal--body form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.modal--body label {
+    display: flex;
+    justify-content: flex-start;
+    color: #b5ff45;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.modal--body input, select {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.modal--body input[type="submit"] {
+    font-weight: 600;
+    font-size: 12pt;
+    color: white;
+    background-color: #91c741;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    width: 30%;
+    float: right;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.2s ease-in-out;
+}
+
+.modal--body input[type="submit"]:hover,
+.close--modal:hover {
+    opacity: 1;
+}
+
+@media only screen and (max-width:760px) {
+    .edit--btn,
+    .delet--btn {
+        width: 90%;
+    }    
 }

@@ -1,6 +1,7 @@
-const openbuttons = document.querySelectorAll('.abrir_modal');
+const openModalButton = document.querySelectorAll('#abrir_modal');
+const closeModalButton = document.querySelectorAll('#fechar_modal');
 
-openbuttons.forEach(button => {
+openModalButton.forEach(button => {
     button.addEventListener('click', () => {
         const modalid = button.getAttribute('data-modal');
         const modal = document.getElementById(modalid);
@@ -9,9 +10,7 @@ openbuttons.forEach(button => {
     });
 });
 
-const close_modal = document.querySelectorAll('.fechar_modal')
-
-close_modal.forEach(button =>{
+closeModalButton.forEach(button =>{
     button.addEventListener('click', () =>{
         const modalid = button.getAttribute('data-modal');
         const modal = document.getElementById(modalid);
