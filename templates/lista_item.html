@@ -4,51 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../static/icons/Traced Image.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../static/css/table.css">
+
   <script src="../static/js/search_table.js" defer></script>
   <script src="../static/js/modal.js" defer></script>
 
-  <title>lista</title>
+  <title>Tabela de itens</title>
 </head>
 
 <body>
 
-  <a href="/">
-    <button>
-      <-- </button>
-  </a>
-
   <div class="search--flex">
     <input type="number" id="search--tipping" placeholder=" buscar por id ">
-    <button class="abrir_modal search--btn" data-modal="modal1">Adicionar</button>
+    <button id="abrir_modal" class="search--btn" data-modal="modal">Adicionar</button>
   </div>
 
-  <!-- MODAL DE CRIAR -->
-  <dialog id="modal1">
-    <button class="fechar_modal" data-modal="modal1">X</button>
-    <div>
+  <!-- MODAL -->
+  <div id="fader" class="hide"></div>
+
+  <dialog id="modal" class="modal--all hide">
+    <div class="modal--header">
+      <h2>Adicione um item</h2>
+      <button id="fechar_modal" class="close--modal" data-modal="modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal--body">
       <form action="/adicionar" method="post">
 
-        <label for="id">Id</label>
-        <input type="number" placeholder="Id" name="id">
+        {% if tabela[0].potencia %}
 
-        {% if movel %}
+        <label for="potencia">Potência:</label>
+        <input type="text" id="potencia" name="potencia">
+
+        <label for="consumo">Consumo:</label>
+        <input type="text" id="consumo" name="consumo">
+
+        {% else %}
 
         <label for="material">Material:</label>
         <input type="text" id="material" name="material">
 
         <label for="cor">Cor:</label>
         <input type="text" id="cor" name="cor">
-
-        {% else %}
-
-        <label for="potencia">Potência:</label>
-        <input type="number" id="potencia" name="potencia">
-
-        <label for="consumo">Consumo:</label>
-        <input type="number" id="consumo" name="consumo">
-
 
         {% endif %}
 
@@ -64,9 +66,9 @@
 
         </select>
 
-        <input type="submit" value="criar">
-
+        <input type="submit" value="Adicionar">
       </form>
+
     </div>
   </dialog>
 
@@ -76,12 +78,12 @@
       <tr>
         <th>id</th>
         <th>Local</th>
-        {% if movel %}
-        <th>Cor</th>
-        <th>Material</th>
-        {% else %}
+        {% if tabela[0].potencia %}
         <th>Potencia</th>
         <th>Consumo</th>
+        {% else %}
+        <th>Cor</th>
+        <th>Material</th>
         {% endif %}
         <th>Funções</th>
       </tr>
@@ -89,26 +91,25 @@
 
     <tbody id="table--item">
       {% for objeto in tabela: %}
-      <tr>
-        <td>{{ objeto.id }}</td>
+      <tr id="moveis-{{tabela.id}}"></tr>
 
-        <td>infor {{ objeto.id_sala }}</td>
+      <th scope="row">{{ objeto.id }}</th>
 
-        {% if objeto.potencia %}
+      <td>infor {{ objeto.id_sala }}</td>
 
-        <td>{{ objeto.potencia }}</td>
+      {% if objeto.potencia %}
 
-        <td>{{ objeto.consumo }}</td>
+      <td>{{ objeto.potencia }}</td>
 
-        {% else %}
+      <td>{{ objeto.consumo }}</td>
 
-        <td>{{ objeto.cor }}</td>
+      {% else %}
 
-        <td>{{ objeto.material }}</td>
+      <td>{{ objeto.cor }}</td>
 
-        {% endif %}
+      <td>{{ objeto.material }}</td>
 
-        <td>
+  <td>
           <button data-modal="modal2" class="abrir_modal edit--btn">
             Editar {{ objeto.id }}
           </button>
@@ -162,6 +163,58 @@
           </a>
         </td>
       </tr>
+
+      {% endif %}
+
+      <td class="td--btn">
+
+        <dialog id="modal2" class="modal--all ride">
+          <div class="modal--header">
+            <h2>Edite um item</h2>
+            <button id="fechar_modal" class="close--modal" data-modal="modal2">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="modal--body">
+
+            <form action="/{{objeto.id}}/editar" method="post">
+              {% if tabela[0].potencia %}
+              <label for="potencia">Potência:</label>
+              <input type="text" id="potencia" name="potencia">
+
+              <label for="consumo">Consumo:</label>
+              <input type="text" id="consumo" name="consumo">
+
+              {% else %}
+              <label for="material">Material:</label>
+              <input type="text" id="material" name="material">
+
+              <label for="cor">Cor:</label>
+              <input type="text" id="cor" name="cor">
+
+              {% endif %}
+              <label>Qual a turma ?</label>
+              <select name="turma" id="turma" class="select--turm">
+                <option value="1"> Infor1 </option>
+                <option value="2"> Infor2 </option>
+                <option value="3"> Infor3 </option>
+              </select>
+
+              <input type="submit">
+            </form>
+
+          </div>
+        </dialog>
+
+        <button id="abrir_modal" class="edit--btn" data-modal="modal2">Editar</button>
+        <a href="/{{ objeto.id }}/Deletar">
+          <button class="delet--btn">Deletar</button>
+        </a>
+
+      </td>
+
+
       {% endfor %}
 
     </tbody>
