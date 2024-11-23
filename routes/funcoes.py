@@ -112,9 +112,9 @@ def editar_item(item_id):
     if tabela_moveis:
         
         item =  db.session.query(Moveis).filter_by(id=item_id).first()
-        item.id_sala = request.form['turma']    
-        item.material = request.form['material']
-        item.cor = request.form['cor']
+        # item.id_sala = request.form['turma']    
+        # item.material = request.form['material']
+        # item.cor = request.form['cor']
         
         return redirect(f'{id_obj}')
     else:
