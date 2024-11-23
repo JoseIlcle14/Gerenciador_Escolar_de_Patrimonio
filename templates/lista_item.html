@@ -111,7 +111,7 @@
 
   <td>
           <button data-modal="modal2" class="abrir_modal edit--btn">
-            Editar {{ objeto.id }}
+            Editar
           </button>
 
           <!-- MODAL DE EDITAR -->
@@ -165,56 +165,6 @@
       </tr>
 
       {% endif %}
-
-      <td class="td--btn">
-
-        <dialog id="modal2" class="modal--all ride">
-          <div class="modal--header">
-            <h2>Edite um item</h2>
-            <button id="fechar_modal" class="close--modal" data-modal="modal2">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-
-          <div class="modal--body">
-
-            <form action="/{{objeto.id}}/editar" method="post">
-              {% if tabela[0].potencia %}
-              <label for="potencia">Potência:</label>
-              <input type="text" id="potencia" name="potencia">
-
-              <label for="consumo">Consumo:</label>
-              <input type="text" id="consumo" name="consumo">
-
-              {% else %}
-              <label for="material">Material:</label>
-              <input type="text" id="material" name="material">
-
-              <label for="cor">Cor:</label>
-              <input type="text" id="cor" name="cor">
-
-              {% endif %}
-              <label>Qual a turma ?</label>
-              <select name="turma" id="turma" class="select--turm">
-                <option value="1"> Infor1 </option>
-                <option value="2"> Infor2 </option>
-                <option value="3"> Infor3 </option>
-              </select>
-
-              <input type="submit">
-            </form>
-
-          </div>
-        </dialog>
-
-        <button id="abrir_modal" class="edit--btn" data-modal="modal2">Editar</button>
-        <a href="/{{ objeto.id }}/Deletar">
-          <button class="delet--btn">Deletar</button>
-        </a>
-
-      </td>
-
-
       {% endfor %}
 
     </tbody>
