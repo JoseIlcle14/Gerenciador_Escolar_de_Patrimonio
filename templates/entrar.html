@@ -14,7 +14,7 @@
     <main class="main--login">
         <a href="/">
             <button>
-                <--
+                <i class="fa-solid fa-arrow-left back--btn"></i>
             </button>
         </a>
         <!-- parte de texto do lado esquerdo -->
@@ -41,8 +41,9 @@
                         <input type="password" name="senha" placeholder="insira sua senha" id="password"> <br>
                     
                         <input class="btn--login" type="submit" name="" value="login">
+
                         {%if menssagem == True%}
-                            <div>Usuário não cadastrado</div>
+                            <div class="user--not--register">Usuário não cadastrado</div>
                         {%endif%}
                     </div>
 

@@ -1,5 +1,9 @@
+html, body {
+    overflow-x: hidden; 
+}
+
 footer {
-    background-color: rgb(19, 19, 19);
+    background-color: rgba(19, 19, 19, 0.882);
     color: white;
     height: auto;
     display: flex;

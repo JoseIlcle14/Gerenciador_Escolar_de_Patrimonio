@@ -24,9 +24,11 @@
 <body>
 
     <!--Aqui se encontra o menu do site.-->
-    <header>
+    <!-- <header>
 
-        <img class="logo" src="../static/images/logo.svg" alt="logo">
+        <a href="/">
+            <img class="logo" src="../static/images/logo.svg" alt="logo">
+        </a>
 
         <nav id="nav--bar">
 
@@ -61,7 +63,24 @@
             </details>
 
         </ul>
-    </div>
+    </div> -->
+
+
+    <header>    
+        <a href="/">
+            <img class="logo" src="../static/images/logo.svg" alt="logo">
+        </a>
+        <nav class="nav--bar">
+            <div class="nav--bar--item">
+                <a class="back--active" href="/"> <button> Voltar </button> </a>
+                <a class="line--bottom" href=""> Suporte </a>
+            </div>
+
+            <button id="mobile--btn">
+                <i class="fa-solid fa-bars button--options"></i>
+            </button>
+        </nav>
+    </header>
 
     <!--Aqui se encontra a seção inicial e descritiva-->
     <main>

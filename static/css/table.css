@@ -35,15 +35,29 @@ body {
     gap: 0.5rem;
 }
 
-.search--flex input:focus {
-    outline: none;
-}
-
 .search--flex input {
     width: 100%;
     border: none;
     border-radius: 2px;
     padding: 10px;
+}
+
+.search--flex input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.back--btn {
+    padding: 10px;
+    background: var(--corDeFundo-btn);
+    border: none;
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: 0.5s ease;
+    cursor: pointer;
+
+    & i {
+        color: #fff;
+    }
 }
 
 .search--btn {
@@ -56,13 +70,8 @@ body {
     cursor: pointer;
     padding: 10px;
     opacity: 0.8;
-    transition: 0.3s ease;
+    transition: 0.5s ease;
 }
-
-.search--btn:hover {
-    opacity: 1.5;
-}
-
 
 .edit--btn {
     color: #fff;
@@ -80,10 +89,6 @@ body {
     max-height: 80%;
     opacity: 0.9;
     transition: 0.3s ease;
-}
-
-.edit--btn:hover {
-    opacity: 1;
 }
 
 .delet--btn {
@@ -104,7 +109,10 @@ body {
     transition: 0.3s ease;
 }
 
-.delet--btn:hover {
+.delet--btn:hover,
+.edit--btn:hover,
+.back--btn:hover,
+.search--btn:hover {
     opacity: 1;
 }
 
@@ -158,7 +166,7 @@ body {
         opacity: 0;
         translate: 0 -100vh;
     }
-    
+
     to {
         opacity: 1;
         translate: 0 0;
@@ -176,7 +184,7 @@ body {
 }
 
 dialog::backdrop {
-    background-color:rgba(0, 0, 0, 0.6); 
+    background-color: rgba(0, 0, 0, 0.6);
     animation: transition--modal--backdrop 0.8s ease-in-out;
 }
 
@@ -230,7 +238,8 @@ input:focus {
     letter-spacing: 0.3px;
 }
 
-.modal--body input, select {
+.modal--body input,
+select {
     border: none;
     padding: 0.5rem;
     border-radius: 0.3rem;
@@ -258,8 +267,9 @@ input:focus {
 }
 
 @media only screen and (max-width:760px) {
+
     .edit--btn,
     .delet--btn {
         width: 90%;
-    }    
+    }
 }
