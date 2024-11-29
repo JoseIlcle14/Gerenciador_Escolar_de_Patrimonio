@@ -40,8 +40,10 @@ def index():
    
     
     # apagar uma linha
-    # id = 10148
-    # apagar = Moveis.query.get(id)
+    # id = 2
+    # apagar = Usuarios.query.get(id)
+    # db.session.delete(apagar)
+    # db.session.commit()
 
     # if apagar:
     #     db.session.delete(apagar)
