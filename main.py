@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from routes.funcoes import funcoes_route
 from models import Usuarios, Objetos,Moveis,Eletronicos
-from flask_sqlalchemy import SQLAlchemy
+from  import SQLAlchemy
 from database.db import db
 from flask_login import LoginManager
 

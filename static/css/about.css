@@ -181,7 +181,7 @@ header {
 .home {
     height: 90vh;
     display: flex;
-    background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../icons/fundo.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../images/pexels-olia-danilevich-5088019.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -191,24 +191,21 @@ header {
 }
 
 .home-text {
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     max-width: 600px;
     color: white;
-    text-align: center;
-    justify-content: center;
-    margin: auto;
+
 }
 
 .home-text h1 {
+    text-decoration: underline var(--color--button);
     font-size: 4rem;
     font-weight: 900;
     padding-top: 30px;
     padding-bottom: 30px;
-}
-
-.home-text span {
-    color: var(--primary--color--One);
 }
 
 .home-text p {
@@ -281,7 +278,8 @@ header {
 /*seção de desenvolvedores*/
 .develops {
     background-color: rgb(105, 105, 105);
-    height: auto;
+    height: 45vh;
+    margin-bottom: 25vh;
 }
 
 #main-title {
@@ -351,11 +349,15 @@ header {
 /*responsividade*/
 @media screen and (max-width: 700px) {
     .home {
-        height: 70vh;
+        height: 100vh;
     }
 
     .home-text h1 {
-        font-size: 40px;
+        font-size: 50px;
+    }
+
+    .home-text {
+        margin: auto;
     }
 
     body {
@@ -374,6 +376,10 @@ header {
     .develops p,
     #main-title {
         padding-left: 20px;
+    }
+
+    .develops {
+        margin-bottom: 150vh;
     }
 
 }
