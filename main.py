@@ -26,42 +26,6 @@ app.register_blueprint(funcoes_route)
 
 @app.route('/')
 def index():
-    #apagar uma tabela
-    #Moveis.__table__.drop(db.engine)
-    #print("Tabela Objetos deletada com sucesso!")
-    
-    # adicionar item
-    # sala = int('01')
-    # obj = int('02')
-    # i = 20102
-    # nc = Moveis(id = i, id_sala= sala, id_objeto= obj, material = 'ferro', cor = 'azul')
-    # db.session.add(nc)
-    # db.session.commit()
-   
-    
-    # apagar uma linha
-    # id = 2
-    # apagar = Usuarios.query.get(id)
-    # db.session.delete(apagar)
-    # db.session.commit()
-
-    # if apagar:
-    #     db.session.delete(apagar)
-    #     db.session.commit()
-    #     print('linha apagada')
-    # else:
-    #     print('n deu crt')
-    
-    #update na tabela
-    # id = 10248
-    # objeto = Moveis.query.get(id)
-    # novo_idsala = 2
-    # if objeto:
-    #     objeto.id_sala = novo_idsala
-    #     db.session.commit()
-    #     print('deu crt')
-    # else:
-    #     print('n deu crt')
     
     return render_template('index.html')
 
@@ -70,4 +34,4 @@ def index():
 #criando o banco de dados
 with app.app_context():
     db.create_all()
-app.run(debug=True)
+app.run(host='0.0.0.0',debug=True)
