@@ -1,7 +1,7 @@
 from flask import render_template, request, Blueprint, redirect, url_for,session
 from models import Usuarios,Moveis, Eletronicos
 from database.db import db
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required, logout_user
 
 funcoes_route = Blueprint('funcoes', __name__)
 
@@ -18,6 +18,7 @@ tabela_moveis = []
 @funcoes_route.route('/<int:itens>')
 def listar_itens(itens):
     session['id_obj'] = itens
+    usu = session.get('usu')
     
     global tabela_moveis
     tabela_moveis = db.session.query(Moveis).filter_by(id_objeto = itens).all()
@@ -26,14 +27,14 @@ def listar_itens(itens):
         
         mov = True
 
-        return render_template('lista_item.html', tabela = tabela_moveis, movel = mov)
+        return render_template('lista_item.html', tabela = tabela_moveis, movel = mov, usu = usu)
 
     else:
         
         mov = False
         tabela_eletronicos = db.session.query(Eletronicos).filter_by(id_objeto = itens).all() 
 
-        return render_template('lista_item.html', tabela = tabela_eletronicos, movel = mov)
+        return render_template('lista_item.html', tabela = tabela_eletronicos, movel = mov, usu = usu)
 
 
 # visualizar os detalhes de determinado item de determinada tabela
@@ -46,8 +47,8 @@ def detalhe_item(item_id):
 #////////////////funções adicionais dos administradores////////////////#
 
 # adicionar determinado item em determinada tabela
-@login_required
 @funcoes_route.route('/adicionar', methods = ['POST'] )
+@login_required
 def adicionar_item():
     item_tipo = session.get('id_obj')    
     item_turma = request.form['turma']
@@ -80,8 +81,8 @@ def adicionar_item():
 
 
 # remover determinado item de determinada tabela
-@login_required
 @funcoes_route.route('/<int:item_id>/Deletar')
+@login_required
 def deletar_item(item_id):
     id_obj = session.get('id_obj')
         
@@ -103,29 +104,31 @@ def deletar_item(item_id):
 
 
 # editar determinado item de determinada tabela
-@funcoes_route.route('/<int:item_id>/editar>', methods = ['POST'])
+@funcoes_route.route('/<int:item_id>/editar', methods = ['POST'])
+@login_required
 def editar_item(item_id):
     id_obj = session.get('id_obj')
     print(item_id)
 
+
     if tabela_moveis:
         
         item =  db.session.query(Moveis).filter_by(id=item_id).first()
-        # item =  db.session.query(Moveis).filter_by(id=item_id).first()
-        # item.id_sala = request.form['turma']    
-        # item.material = request.form['material']
-        # item.cor = request.form['cor']
         
+        item.id_sala= request.form['turma']    
+        item.material = request.form['material']
+        item.cor  = request.form['cor']
+
         return redirect(f'{id_obj}')
     else:
 
         item = db.session.query(Eletronicos).filter_by(id=item_id).first()
 
-        # item.id_sala = request.form['turma']    
-        # item.potencia = request.form['potencia']
-        # item.consumo = request.form['consumo']
+        item.id_sala = request.form['turma']    
+        item.potencia = request.form['potencia']
+        item.consumo = request.form['consumo']
 
-        # db.session.commit()
+    db.session.commit()
         
     return redirect(f'/{id_obj}')
 
@@ -149,4 +152,15 @@ def login():
             return render_template('entrar.html', menssagem = menssagem)
         
         login_user(user)
-        return redirect(url_for('index'))     
+        session['usu'] = True
+        return redirect('/')
+
+#///logout///#
+@funcoes_route.route('/logout')
+@login_required
+def logout():
+    
+    logout_user()
+    session['usu'] = False
+    
+    return redirect('/') 

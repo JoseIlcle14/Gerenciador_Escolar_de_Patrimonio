@@ -68,10 +68,19 @@
                         <a href="#" download="Guia do usuário - GEP"></a>
                     </li>
                 </ul>
+                {% if usu: %}
+
+                <a href="{{ url_for('funcoes.logout') }}">
+                    <button> logout </button>
+                </a>
+
+                {% else: %}
 
                 <a href="{{ url_for('funcoes.login') }}" class="btn--login--active">
                     <button> Login </button>
                 </a>
+
+                {% endif %}
             </div>
 
             <button id="mobile--btn">

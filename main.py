@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session   
 from routes.funcoes import funcoes_route
-from models import Usuarios, Objetos,Moveis,Eletronicos
+from models import Usuarios
 from database.db import db
 from flask_login import LoginManager
 
@@ -15,8 +15,12 @@ lm.login_view = 'funcoes.login'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)   
 
+usuario = None
+
 @lm.user_loader
 def user_loader(id):
+    global usuario
+    
     usuario = db.session.query(Usuarios).filter_by(id=id).first()
     
     return usuario
@@ -25,8 +29,9 @@ app.register_blueprint(funcoes_route)
 
 @app.route('/')
 def index():
-    
-    return render_template('index.html')
+    usu = session.get('usu')
+
+    return render_template('index.html', usu = usu)
 
    
     
