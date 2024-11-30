@@ -1,4 +1,4 @@
-:root { 
+:root {
     --primary--color--One: #7AA637;
     --primary--color--two: #002400;
     --primary--color--three: #3f600e;
@@ -15,11 +15,24 @@
     font-family: "Josefin Sans", sans-serif;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color--hover);
+}
+
 body {
     background-color: var(--primary--color--five);
 }
 
-header {
+/* header {
     height: 100%;
     width: 100%;
     max-height: 80px;
@@ -81,6 +94,83 @@ header {
 
 .nav--item.active a:hover {
     background-color: var(--primary--color--One);
+} */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 20px 100px;
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 0 10px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 100px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.nav--bar .nav--bar--item a {
+    position: relative;
+    text-decoration: none;
+    color: var(--color--hover);
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-left: 30px;
+}
+
+.nav--bar .nav--bar--item a.line--bottom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -6px;
+    height: 3px;
+    border-radius: 4px;
+    background: var(--color--hover);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.nav--bar .nav--bar--item a.line--bottom:hover::after {
+    transform: scaleX(1);
+}
+
+.nav--bar .nav--bar--item a.line--bottom {
+    transition: 0.4s ease-in-out;
+}
+
+.nav--bar .nav--bar--item a.line--bottom:hover {
+    color: #fff;
+}
+
+.back--active button {
+    color: white;
+    background-color: var(--color--button);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.back--active button:hover {
+    background: #517b12;
+    color: black;
 }
 
 #mobile--btn {
@@ -91,7 +181,7 @@ header {
 .home {
     height: 90vh;
     display: flex;
-    background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../icons/fundo.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../images/pexels-olia-danilevich-5088019.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -101,24 +191,21 @@ header {
 }
 
 .home-text {
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     max-width: 600px;
     color: white;
-    text-align: center;
-    justify-content: center;
-    margin: auto;
+
 }
 
 .home-text h1 {
+    text-decoration: underline var(--color--button);
     font-size: 4rem;
     font-weight: 900;
     padding-top: 30px;
     padding-bottom: 30px;
-}
-
-.home-text span {
-    color: var(--primary--color--One);
 }
 
 .home-text p {
@@ -191,7 +278,8 @@ header {
 /*seção de desenvolvedores*/
 .develops {
     background-color: rgb(105, 105, 105);
-    height: auto;
+    height: 45vh;
+    margin-bottom: 25vh;
 }
 
 #main-title {
@@ -254,18 +342,22 @@ header {
     border: 3px solid var(--primary--color--One);
 }
 
-#mobile--menu{
+#mobile--menu {
     display: none;
 }
 
 /*responsividade*/
 @media screen and (max-width: 700px) {
     .home {
-        height: 70vh;
+        height: 100vh;
     }
 
     .home-text h1 {
-        font-size: 40px;
+        font-size: 50px;
+    }
+
+    .home-text {
+        margin: auto;
     }
 
     body {
@@ -286,31 +378,51 @@ header {
         padding-left: 20px;
     }
 
-}@media only screen and (max-width: 1170px) {
-    #nav--list {
+    .develops {
+        margin-bottom: 150vh;
+    }
+
+}
+
+@media only screen and (max-width: 1170px) {
+
+    .nav--bar .nav--bar--item {
         display: none;
+    }
+
+    .logo {
+        width: 100%;
+        max-width: 100px;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        margin-left: -80px;
     }
 
     #mobile--btn {
         display: block;
+        width: 100%;
         border: none;
         background-color: transparent;
         font-size: 1.5rem;
         cursor: pointer;
         color: var(--color--button);
         transition: 0.2s ease-in-out;
-    } 
-    
+    }
+
+    #mobile--btn .button--options {
+        margin-right: -120px;
+    }
+
     #mobile--btn:hover {
         color: var(--color--hover);
     }
 
-    #mobile--menu.active { 
+    #mobile--menu.active {
         display: flex;
         width: 100%;
         justify-content: flex-start;
-        background: grey;   
-        transition: 0.4s ease-in;    
+        background: grey;
+        transition: 0.4s ease-in;
     }
 
     #mobile--nav--list {
@@ -320,7 +432,7 @@ header {
         margin: 0.3rem;
     }
 
-    .btn--m a{
+    .btn--m a {
         color: black;
         text-decoration: none;
         transition: all 0.1s ease-out;
