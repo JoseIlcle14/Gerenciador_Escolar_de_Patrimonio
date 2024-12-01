@@ -278,8 +278,8 @@ header {
 /*seção de desenvolvedores*/
 .develops {
     background-color: rgb(105, 105, 105);
-    height: 45vh;
-    margin-bottom: 25vh;
+    height: auto;
+    margin-bottom: 15vh;
 }
 
 #main-title {
@@ -376,10 +376,6 @@ header {
     .develops p,
     #main-title {
         padding-left: 20px;
-    }
-
-    .develops {
-        margin-bottom: 150vh;
     }
 
 }
