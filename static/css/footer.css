@@ -48,6 +48,13 @@ footer {
 .bloco-2{
     margin: auto;
 }
+
+.github_link{
+    text-decoration: none;
+    color:#f6f3e286;
+    cursor: pointer;
+}
+
 .container-blocos{
     margin-right: -45vw;
     display: flex;
@@ -139,7 +146,7 @@ footer p{
        
     }
 
-    .respon{
+    .respon {
         display: flex;
         flex-direction: column;
         text-align: center;

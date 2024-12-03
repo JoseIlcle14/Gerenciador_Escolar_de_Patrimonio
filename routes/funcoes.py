@@ -3,6 +3,7 @@ from models import Usuarios,Moveis, Eletronicos
 from database.db import db
 from flask_login import login_user, login_required, logout_user
 
+#criando roteador
 funcoes_route = Blueprint('funcoes', __name__)
 
 #////////////////funções dos usuários////////////////#
@@ -12,6 +13,7 @@ funcoes_route = Blueprint('funcoes', __name__)
 def sobre():
     
     return render_template('sobre.html')
+
 
 tabela_moveis = []
 # visualizar os objetos de determinada tabela
@@ -37,16 +39,9 @@ def listar_itens(itens):
         return render_template('lista_item.html', tabela = tabela_eletronicos, movel = mov, usu = usu)
 
 
-# visualizar os detalhes de determinado item de determinada tabela
-@funcoes_route.route('/<int:item_id>/detalhe')
-def detalhe_item(item_id):
-
-    pass
-
-
 #////////////////funções adicionais dos administradores////////////////#
 
-# adicionar determinado item em determinada tabela
+# adicionar um item 
 @funcoes_route.route('/adicionar', methods = ['POST'] )
 @login_required
 def adicionar_item():
@@ -80,7 +75,7 @@ def adicionar_item():
         return redirect(f'{item_tipo}')
 
 
-# remover determinado item de determinada tabela
+# remover um item
 @funcoes_route.route('/<int:item_id>/Deletar')
 @login_required
 def deletar_item(item_id):
@@ -103,7 +98,7 @@ def deletar_item(item_id):
         return redirect(f'/{id_obj}')
 
 
-# editar determinado item de determinada tabela
+# editar um item
 @funcoes_route.route('/<int:item_id>/editar', methods = ['POST'])
 @login_required
 def editar_item(item_id):
@@ -155,7 +150,7 @@ def login():
         session['usu'] = True
         return redirect('/')
 
-#///logout///#
+#////////////////logout////////////////#
 @funcoes_route.route('/logout')
 @login_required
 def logout():
@@ -163,4 +158,4 @@ def logout():
     logout_user()
     session['usu'] = False
     
-    return redirect('/') 
+    return redirect('/')

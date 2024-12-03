@@ -4,7 +4,11 @@ from models import Usuarios
 from database.db import db
 from flask_login import LoginManager
 
+
 app = Flask(__name__)
+
+#conectando roteadores
+app.register_blueprint(funcoes_route)
 
 #chave de segurança do projeto
 app.secret_key = '12345678'
@@ -15,8 +19,7 @@ lm.login_view = 'funcoes.login'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db.init_app(app)   
 
-usuario = None
-
+#carregar usuários
 @lm.user_loader
 def user_loader(id):
     global usuario
@@ -25,8 +28,7 @@ def user_loader(id):
     
     return usuario
 
-app.register_blueprint(funcoes_route)
-
+#rota padrão do site
 @app.route('/')
 def index():
     usu = session.get('usu')
@@ -38,4 +40,6 @@ def index():
 #criando o banco de dados
 with app.app_context():
     db.create_all()
+    
+#rodando o site    
 app.run(host='0.0.0.0',debug=True)

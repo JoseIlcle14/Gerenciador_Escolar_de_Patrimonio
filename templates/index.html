@@ -25,35 +25,7 @@
 </head>
 
 <body>
-
-    <!--Aqui se encontra o menu do site.-->
-    <!-- <header>
-
-        <img class="logo" src="../static/images/logo.svg" alt="logo">
-
-        <nav id="nav--bar">
-
-            <ul id="nav--list">
-
-                <li class="nav--item">
-                    <a href="{{url_for('funcoes.sobre')}}">Sobre nós</a>
-                </li>
-
-                <li class="nav--item">
-                    <a href="#">Suporte &#x25BE;</a>
-                </li>
-
-                <li class="nav--item active"><a href="{{ url_for('funcoes.login') }}">login</a></li>
-                
-            </ul>
-
-            <button id="mobile--btn">
-                <i class="fa-solid fa-bars button--options"></i>
-            </button>
-
-        </nav>
-    </header> -->
-
+    <!-- Aqui se encontra o menu de navegação do site -->
     <header>
         <a href="/">
             <img class="logo" src="../static/images/logo.svg" alt="logo">
@@ -70,7 +42,7 @@
                 </ul>
                 {% if usu: %}
 
-                <a href="{{ url_for('funcoes.logout') }}">
+                <a href="{{ url_for('funcoes.logout') }}" class="btn--login--active">
                     <button> logout </button>
                 </a>
 
@@ -89,7 +61,8 @@
         </nav>
     </header>
 
-    <!-- Versão mobile do site -->
+
+    <!-- Versão mobile- menu de navegação site -->
     <div id="mobile--menu">
         <ul id="mobile--nav--list">
 
@@ -109,6 +82,7 @@
 
     <div class="spacing"></div>
 
+
     <!-- CORPO DO SITE - Aqui se encontra as opções de patrimônio do ambiente escolar -->
     <main>
         <section class="home">
@@ -120,7 +94,7 @@
 
         <h1 class="text--user--tool"> Utilize nossa ferramenta </h1>
 
-        <div class="container">
+        <section class="container">
             <div class="ct--center">
                 <div class="options--tomb">
                     <a href="/1">
@@ -166,14 +140,13 @@
                     <p class="description--item">PROJETOR</p>
                 </div>
             </div>
-        </div>
+        </section>
 
     </main>
 
     <div class="spacing"></div>
 
     <!-- Aqui se encontra o rodapé do site-->
-
     <footer>
         <div class="respon">
             <div class="footer--row">
@@ -192,15 +165,27 @@
                         </ul>
                     </div>
 
-                    <div class="bloco-2">
-                        <img id="contact-img" src="../static/icons/github.png" alt="Github">
-                        <ul>
-                            <li>jJoseIlcle14 </li>
-                            <li>patluc15</li>
-                            <li>Andr-wq</li>
-                            <li>FcoKauan </li>
-                        </ul>
-                    </div>
+        
+                <div class="bloco-2">
+                    <img id="contact-img" src="../static/icons/github.png" alt="Github">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/JoseIlcle14" class="github_link">jJoseIlcle14</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/patluc15" class="github_link">patluc15</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Andr-wq" class="github_link">Andr-wq</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FcoKauan" class="github_link">FcoKauan</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Victor-Gabriel-marinho" class="github_link">Victor-Gabriel-marinho</a>
+                        </li>
+                    </ul>
+
 
                 </div>
 
