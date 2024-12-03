@@ -185,13 +185,13 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding: 30px;
     border-radius: 0px 0px 40px 40px;
     background-attachment: fixed;
 }
 
 .home-text {
-    margin-left: 50px;
+    text-align: center;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -358,6 +358,7 @@ header {
 
     .home-text {
         margin: auto;
+        margin-left: 5px;
     }
 
     body {
