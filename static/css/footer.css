@@ -36,6 +36,12 @@ footer {
     color: #f6f3e286;
 }
 
+.github_link{
+    text-decoration: none;
+    color:#f6f3e286;
+    cursor: pointer;
+}
+
 .container-blocos{
     display: flex;
     flex-direction: row;
