@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.register_blueprint(funcoes_route)
 
 #chave de segurança do projeto
-app.secret_key = '12345678'
+app.secret_key = 'Z7b0[7,#ezK35]6r8E,0jtQx|[Gif:'
 lm = LoginManager(app)
 lm.login_view = 'funcoes.login'
 

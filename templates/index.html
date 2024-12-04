@@ -33,27 +33,33 @@
         </a>
         <nav class="nav--bar">
             <div class="nav--bar--item">
-                <a class="line--bottom" href="{{url_for('funcoes.sobre')}}"> Sobre nós </a>
+                <ul>    
+                    <li><a class="line--bottom" href="{{url_for('funcoes.sobre')}}"> Sobre nós </a></li>
 
-                <a class="line--bottom" href=""> Suporte </a>
-                <ul class="dropdown">
-                    <li>
-                        <a href="#" download="Guia do usuário - GEP"></a>
-                    </li>
+                    <li class="line--bottom"> <a href="#"> Suporte </a>
+                        <ul class="dropdown">
+                            <li class="drop--item">
+                                <a href="../static/arquivo/GuiaDousuário.pdf (2).pdf"
+                                    download=" Guia do usuário - GEP "> Download - Guia do Usuário</a>
+                            </li>
+                        </ul>
                 </ul>
-                {% if usu: %}
 
-                <a href="{{ url_for('funcoes.logout') }}" class="btn--login--active">
-                    <button> logout </button>
-                </a>
+                {% if usu: %}
+                <li>
+                    <a href="{{ url_for('funcoes.logout') }}" class="btn--login--active">
+                        <button> Sair </button>
+                    </a>
+                </li>
 
                 {% else: %}
-
-                <a href="{{ url_for('funcoes.login') }}" class="btn--login--active">
-                    <button> Login </button>
-                </a>
-
+                <li>
+                    <a href="{{ url_for('funcoes.login') }}" class="btn--login--active">
+                        <button> Login </button>
+                    </a>
+                </li>
                 {% endif %}
+                </ul>
             </div>
 
             <button id="mobile--btn">
@@ -63,7 +69,7 @@
     </header>
 
 
-    <!-- Versão mobile- menu de navegação site -->
+    <!-- Versão mobile - menu de navegação site -->
     <div id="mobile--menu">
         <ul id="mobile--nav--list">
 
@@ -74,15 +80,16 @@
             <details>
                 <summary class="dropDown--su">Suporte</summary>
 
-                <li class="btn--m drop--btn"><a href="#" download="Guia do Usuário - GEP">Download - manual do
-                        usuário</a></li>
+                <li class="btn--m drop--btn"><a href="../static/arquivo/GuiaDousuário.pdf (2).pdf"
+                        download=" Guia do Usuário - GEP"> Download - manual do
+                        usuário</a>
+                </li>
             </details>
 
         </ul>
     </div>
 
     <div class="spacing"></div>
-
 
     <!-- CORPO DO SITE - Aqui se encontra as opções de patrimônio do ambiente escolar -->
     <main>
@@ -151,8 +158,13 @@
     <footer>
         <div class="respon">
             <div class="footer--row">
-                <img id="logo-footer" src="../static/images/logo.svg" alt="logotipo">
+
+
                 <div class="container-blocos">
+
+                    <figure>
+                        <img id="logo-footer" src="../static/images/logo.svg" alt="logotipo">
+                    </figure>
 
                     <div class="bloco-1">
                         <img id="contact-img" src="../static/icons/email.png" alt="email">
@@ -166,27 +178,15 @@
                         </ul>
                     </div>
 
-        
-                <div class="bloco-2">
-                    <img id="contact-img" src="../static/icons/github.png" alt="Github">
-                    <ul>
-                        <li>
-                            <a href="https://github.com/JoseIlcle14" class="github_link">jJoseIlcle14</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/patluc15" class="github_link">patluc15</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/Andr-wq" class="github_link">Andr-wq</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/FcoKauan" class="github_link">FcoKauan</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/Victor-Gabriel-marinho" class="github_link">Victor-Gabriel-marinho</a>
-                        </li>
-                    </ul>
-
+                    <div class="bloco-2">
+                        <img id="contact-img" src="../static/icons/github.png" alt="Github">
+                        <ul>
+                            <li>jJoseIlcle14 </li>
+                            <li>patluc15</li>
+                            <li>Andr-wq</li>
+                            <li>FcoKauan </li>
+                        </ul>
+                    </div>
 
                 </div>
 

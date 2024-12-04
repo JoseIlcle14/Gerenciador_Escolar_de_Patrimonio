@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +7,8 @@
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../static/css/table.css">
+  <link rel="shortcut icon" href="../static/icons/favicon.png" type="image/x-icon">
+
 
   <script src="../static/js/search_table.js" defer></script>
   <script src="../static/js/modal.js" defer></script>
@@ -17,22 +18,23 @@
 
 <body>
 
-  <div class="search--flex">
-    <button class="back--btn">
-      <a href="/">
+  <section class="search--flex">
+
+    <a href="/">
+      <button class="back--btn">
         <i class="fa-solid fa-house"></i>
-      </a>
-    </button>
+      </button>
+    </a>
 
     <input type="number" id="search--tipping" placeholder=" buscar por id ">
+
     {% if usu: %}
     <button id="abrir_modal" class="search--btn" data-modal="modal">Adicionar</button>
     {% endif %}
-  </div>
+
+  </section>
 
   <!-- MODAL -->
-  <div id="fader" class="hide"></div>
-
   <dialog id="modal" class="modal--all hide">
     <div class="modal--header">
       <h2>Adicione um item</h2>
@@ -132,61 +134,51 @@
       <td>{{ objeto.material }}</td>
 
       {% endif %}
-{% if usu: %}
-  <td>
-          <button data-modal="modal{{objeto.id}}" id="abrir_modal" class="abrir_modal edit--btn">
-            Editar
-          </button>
+      {% if usu: %}
+      <td>
+        <button data-modal="modal{{objeto.id}}" id="abrir_modal" class="abrir_modal edit--btn">
+          Editar
+        </button>
 
-          <!-- MODAL DE EDITAR -->
-          <dialog id="modal{{objeto.id}}">
+        <!-- MODAL DE EDITAR -->
+        <dialog id="modal{{objeto.id}}" class="modal--all">
 
+          <div class="modal--header">
+            <h2> Edite um item </h2>
             <button id="fechar_modal" class="close--modal" data-modal="modal{{objeto.id}}">
               <i class="fa-solid fa-xmark"></i>
             </button>
+          </div>
 
+          <div class="modal--body">
             <form action="{{ objeto.id }}/editar" method="post">
-
               {% if movel %}
-
               <label for="material">Material:</label>
               <input type="text" id="material" name="material" required>
-
               <label for="cor">Cor:</label>
               <input type="text" id="cor" name="cor" required>
-
               {% else %}
-
               <label for="potencia">Potência:</label>
               <input type="text" id="potencia" name="potencia" required>
-
               <label for="consumo">Consumo:</label>
               <input type="text" id="consumo" name="consumo" required>
-
               {% endif %}
-
               <label>Qual a turma ?</label>
-
               <select name="turma" id="turma">
-
                 <option value="1"> Infor1 </option>
-
                 <option value="2"> Infor2 </option>
-
                 <option value="3"> Infor3 </option>
-
               </select>
-
               <input type="submit" value="Editar">
-
             </form>
-          </dialog>
+          </div>
+        </dialog>
 
-          <a href="/{{ objeto.id }}/Deletar">
-            <button class="delet--btn">Deletar</button>
-          </a>
-        </td>
-{% endif %}
+        <a href="/{{ objeto.id }}/Deletar">
+          <button class="delet--btn">Deletar</button>
+        </a>
+      </td>
+      {% endif %}
       </tr>
       {% endfor %}
 

@@ -7,6 +7,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('#mobile--btn').on('click', function(){
-        $('#mobile--btn').find('i').toggleClass('fa-x');
+    $('#mobile--btn').find('i').toggleClass('fa-x');
     })
 })

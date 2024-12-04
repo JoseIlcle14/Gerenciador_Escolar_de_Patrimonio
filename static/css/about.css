@@ -1,11 +1,11 @@
 :root {
-    --primary--color--One: #7AA637;
-    --primary--color--two: #002400;
-    --primary--color--three: #3f600e;
-    --primary--color--Four: #f6f3e286;
-    --primary--color--five: #c2bbb9;
-    --color--hover: #8fc341;
-    --color--button: #598615;
+    --color--1: #7AA637;
+    --color--2: #002400;
+    --color--3: #3f600e;
+    --color--4: #f6f3e286;
+    --color--5: #c2bbb9;
+    --color--6: #8fc341;
+    --color--7: #598615;
 }
 
 * {
@@ -15,6 +15,7 @@
     font-family: "Josefin Sans", sans-serif;
 }
 
+/* estilização do scroll */
 ::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
@@ -25,77 +26,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color--hover);
+    background: var(--color--6);
 }
+
 
 body {
-    background-color: var(--primary--color--five);
+    background-color: var(--color--4);
 }
 
-/* header {
-    height: 100%;
-    width: 100%;
-    max-height: 80px;
-    display: flex;
-    padding: 28px 8%;
-    background-color: black;
-    box-shadow: 0 0 10px;
-}
-
-.logo {
-    width: 100%;
-    max-width: 100px;
-    height: 100%;
-    max-width: 100px;
-    margin-top: -35px;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
-
-.logo:hover {
-    width: 100%;
-    max-width: 100px;
-    height: 100%;
-    max-width: 105px;
-}
-
-#nav--bar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-right: 0px;
-}
-
-#nav--list {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-.nav--item a {
-    text-decoration: none;
-    color: var(--primary--color--One);
-    transition: 0.3s ease;
-}
-
-.nav--item a:hover {
-    text-decoration: none;
-    color: white;
-}
-
-.nav--item.active a {
-    color: white;
-    background-color: var(--primary--color--three);
-    padding: 10px;
-    border-radius: 5px;
-    transition: 0.2s ease;
-}
-
-.nav--item.active a:hover {
-    background-color: var(--primary--color--One);
-} */
-
+/* Estilização do header */
 header {
     position: fixed;
     top: 0;
@@ -125,7 +64,7 @@ header {
 .nav--bar .nav--bar--item a {
     position: relative;
     text-decoration: none;
-    color: var(--color--hover);
+    color: var(--color--6);
     font-size: 1.1em;
     font-weight: 400;
     margin-left: 30px;
@@ -139,7 +78,7 @@ header {
     bottom: -6px;
     height: 3px;
     border-radius: 4px;
-    background: var(--color--hover);
+    background: var(--color--6);
     transform: scaleX(0);
     transition: transform 0.5s ease;
 }
@@ -158,7 +97,7 @@ header {
 
 .back--active button {
     color: white;
-    background-color: var(--color--button);
+    background-color: var(--color--3);
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -177,9 +116,9 @@ header {
     display: none;
 }
 
-/*seção de início*/
+/*Estilização da seção de início*/
 .home {
-    height: 90vh;
+    height: 100vh;
     display: flex;
     background: linear-gradient(rgba(0, 0, 0, 0.782), rgba(0, 0, 0, 0.393)), url(../images/pexels-olia-danilevich-5088019.jpg);
     background-repeat: no-repeat;
@@ -201,7 +140,7 @@ header {
 }
 
 .home-text h1 {
-    text-decoration: underline var(--color--button);
+    text-decoration: underline var(--color--1);
     font-size: 4rem;
     font-weight: 900;
     padding-top: 30px;
@@ -209,14 +148,14 @@ header {
 }
 
 .home-text p {
-    color: var(--primary--color--five);
+    color: var(--color--5);
     font-size: 30px;
 }
 
-/*seção de benefícios*/
+/*Estilização da seção de benefícios*/
 .benefits {
     padding: 20px;
-    background-color: var(--primary--color--five);
+    background-color: var(--color--5);
     display: flex;
     justify-content: center;
     height: 45vh;
@@ -238,7 +177,7 @@ header {
 
 .benefits img {
     border-radius: 15px;
-    background-color: var(--primary--color--One);
+    background-color: var(--color--1);
     width: 30vw;
     height: 40vh;
 }
@@ -290,7 +229,7 @@ header {
 }
 
 .develops p {
-    color: var(--primary--color--Four);
+    color: var(--color--4);
     padding-left: 325px;
     padding-bottom: 10px;
 }
@@ -325,13 +264,13 @@ header {
 }
 
 #title {
-    color: var(--primary--color--One);
+    color: var(--color--1);
     padding-top: 5px;
     padding-bottom: 10px;
 }
 
 .card ul {
-    color: var(--primary--color--Four);
+    color: var(--color--4);
     line-height: 2;
     padding-left: 15px;
     padding-top: 5px;
@@ -339,7 +278,7 @@ header {
 
 .card:hover {
     scale: 1.1;
-    border: 3px solid var(--primary--color--One);
+    border: 3px solid var(--color--1);
 }
 
 #mobile--menu {
@@ -348,6 +287,12 @@ header {
 
 /*responsividade*/
 @media screen and (max-width: 700px) {
+
+    .logo {
+        width: 100%;
+        float: left;
+    }
+    
     .home {
         height: 100vh;
     }
@@ -402,7 +347,7 @@ header {
         background-color: transparent;
         font-size: 1.5rem;
         cursor: pointer;
-        color: var(--color--button);
+        color: var(--color--1);
         transition: 0.2s ease-in-out;
     }
 
@@ -411,7 +356,7 @@ header {
     }
 
     #mobile--btn:hover {
-        color: var(--color--hover);
+        color: var(--color--6);
     }
 
     #mobile--menu.active {
@@ -444,7 +389,7 @@ header {
 
     .drop--btn {
         font-weight: 500;
-        background: var(--color--hover);
+        background: var(--color--6);
         /* padding: 0.1rem 0.5rem; */
         padding: 0.1rem 0.5rem;
         margin-bottom: 1rem;

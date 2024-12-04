@@ -1,9 +1,13 @@
 :root {
-    --color--hover: #7AA637;
-    --color--two: #002400;
+    --color--font: #7AA637;
+    --color--background: #7AA637;
     --color--button: #3f600e;
-    --color--body: #f6f3e286;
-    --color--five: #C2BBB9;
+    --color--background--body: #C2BBB9;
+
+}
+
+body {
+    background-color: var(--color--background--body);
 }
 
 header {
@@ -19,6 +23,50 @@ header {
     align-items: center;
     z-index: 999;
     box-shadow: 0 0 10px;
+}
+
+header ul li {
+    display: inline-block;
+    position: relative;
+}
+
+header ul li a {
+    display: block; 
+    padding: 15px 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+header ul li ul.dropdown li {
+    display: block;
+}
+
+header nav div ul li ul.dropdown {
+    width: 200px;
+    background: var(--color--background); 
+    border-radius: 5px;
+    position: absolute;
+    display: none;
+    top: 50px;
+    left: -30px;
+    opacity: 0.8;
+    transition: 0.5s ease;
+}
+
+header nav div ul li ul.dropdown:hover,
+.line--bottom .dropdown .drop--item a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+header ul li:hover .dropdown {
+    display: block;
+}
+
+.line--bottom .dropdown .drop--item a {
+    color: #000;
+    position: relative;
+    right: 10px;
 }
 
 .logo {
@@ -41,7 +89,7 @@ header {
 .nav--bar .nav--bar--item a {
     position: relative;
     text-decoration: none;
-    color: var(--color--hover);
+    color: var(--color--font);
     font-size: 1.1em;
     font-weight: 400;
     margin-left: 20px;
@@ -52,10 +100,10 @@ header {
     position: absolute;
     left: 0;
     width: 100%;
-    bottom: -6px;
-    height: 3px;
+    bottom: 6px;
+    height: 2px;
     border-radius: 4px;
-    background: var(--color--hover);
+    background: var(--color--background);
     transform: scaleX(0);
     transition: transform 0.5s ease;
 }
@@ -95,7 +143,6 @@ header {
 
 #mobile--menu {
     display: none;
-    animation: transition--menu 0.8s ease-in-out;
 }
 
 @keyframes transition--menu {
@@ -123,7 +170,12 @@ header {
     }
 
     .spacing {
-        height: 80px;
+        height: 10px;
+    }
+    
+    #mobile--menu {
+        display: none;
+        animation: transition--menu 0.8s ease-in-out;
     }
 
     #mobile--btn {
@@ -141,12 +193,14 @@ header {
         margin-right: -120px;
     }
 
+
     #mobile--menu.active {
         display: flex;
         width: 100%;
         justify-content: flex-start;
         background: #ffffff48;
         transition: all 0.4s ease-in;
+        margin-top: 70px;
     }
 
     #mobile--nav--list {
@@ -164,7 +218,7 @@ header {
     }
 
     #mobile--btn:hover {
-        color: var(--color--hover);
+        color: var(--color--font);
     }
 
     .dropDown--su {
@@ -175,7 +229,7 @@ header {
 
     .drop--btn {
         font-weight: 500;
-        background: var(--color--hover);
+        background: var(--color--font);
         padding: 0.5rem;
     }
 }
