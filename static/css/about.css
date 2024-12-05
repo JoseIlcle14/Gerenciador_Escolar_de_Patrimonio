@@ -286,7 +286,80 @@ header {
 }
 
 /*responsividade*/
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 730px) {
+
+    .nav--bar .nav--bar--item {
+        display: none;
+    }
+
+    .logo {
+        width: 100%;
+        float: left;
+    }
+
+    .spacing {
+        height: 10px;
+    }
+    
+    #mobile--menu {
+        display: none;
+        animation: transition--menu 0.8s ease-in-out;
+    }
+
+    #mobile--btn {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color--3);
+        transition: 0.2s ease-in-out;
+    }
+
+    #mobile--btn .button--options {
+        margin-right: -120px;
+    }
+
+
+    #mobile--menu.active {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        background: #ffffff48;
+        transition: all 0.4s ease-in;
+        margin-top: 70px;
+    }
+
+    #mobile--nav--list {
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
+
+    .btn--m a {
+        color: black;
+        text-decoration: none;
+        transition: all 0.1s ease-out;
+    }
+
+    #mobile--btn:hover {
+        color: var(--color--1);
+    }
+
+    .dropDown--su {
+        list-style: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .drop--btn {
+        font-weight: 500;
+        background: var(--color--1);
+        padding: 0.5rem;
+    }
 
     .logo {
         width: 100%;
@@ -326,6 +399,8 @@ header {
 
 }
 
+/* ----------------------------------------- */
+
 @media only screen and (max-width: 1170px) {
 
     .nav--bar .nav--bar--item {
@@ -334,10 +409,16 @@ header {
 
     .logo {
         width: 100%;
-        max-width: 100px;
-        transition: 0.3s ease-in-out;
-        cursor: pointer;
-        margin-left: -80px;
+        float: left;
+    }
+
+    .spacing {
+        height: 10px;
+    }
+    
+    #mobile--menu {
+        display: none;
+        animation: transition--menu 0.8s ease-in-out;
     }
 
     #mobile--btn {
@@ -347,7 +428,7 @@ header {
         background-color: transparent;
         font-size: 1.5rem;
         cursor: pointer;
-        color: var(--color--1);
+        color: var(--color--3);
         transition: 0.2s ease-in-out;
     }
 
@@ -355,23 +436,22 @@ header {
         margin-right: -120px;
     }
 
-    #mobile--btn:hover {
-        color: var(--color--6);
-    }
 
     #mobile--menu.active {
         display: flex;
         width: 100%;
         justify-content: flex-start;
-        background: grey;
-        transition: 0.4s ease-in;
+        background: #ffffff48;
+        transition: all 0.4s ease-in;
+        margin-top: 70px;
     }
 
     #mobile--nav--list {
         display: flex;
         list-style: none;
         flex-direction: column;
-        margin: 0.3rem;
+        margin: 20px;
+        gap: 20px;
     }
 
     .btn--m a {
@@ -380,18 +460,19 @@ header {
         transition: all 0.1s ease-out;
     }
 
+    #mobile--btn:hover {
+        color: var(--color--1);
+    }
+
     .dropDown--su {
-        color: black;
         list-style: none;
         cursor: pointer;
-        margin-bottom: 1px;
+        margin-bottom: 10px;
     }
 
     .drop--btn {
         font-weight: 500;
-        background: var(--color--6);
-        /* padding: 0.1rem 0.5rem; */
-        padding: 0.1rem 0.5rem;
-        margin-bottom: 1rem;
+        background: var(--color--1);
+        padding: 0.5rem;
     }
 }

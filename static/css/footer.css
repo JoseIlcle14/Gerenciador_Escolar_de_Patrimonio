@@ -11,7 +11,7 @@ footer {
 
 }
 
-#logo-footer {
+.logo--footer {
     width: 200px;
     align-items: center;
     margin: auto;
@@ -68,6 +68,7 @@ footer {
     padding-top: 5px;
     list-style: none;
 }
+
 #contact-img {
     filter: invert(100%);
     width: 50px;
@@ -122,7 +123,26 @@ footer p{
 
 
 /*responsividade*/
-@media screen and (max-width: 533px) {
+@media screen and (max-width: 630px) {
+
+    .logo--footer {
+        width: 100px;
+        align-items: center;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 40px;
+        left: 70px;
+        margin-left: 50px;
+    }
+
+    .bloco-2 {
+        margin-top: 90px;
+    }
+
+    .line--footer {
+        margin-top: 15px;
+    }
 
     .drop {
         width: auto;
@@ -160,6 +180,25 @@ footer p{
 }
 
 /*responsividade*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1008px) {
+    .bloco-1 ul,
+    .bloco-2 ul {
+        color: grey;
+    }
 
+    footer .dropdown-content-footer {
+        color: grey;
+    }
+
+    .logo--footer {
+        margin-left: 150px;
+    }
+
+    .bloco-1 {
+        margin-top: 40px;
+    }
+
+    footer p {
+        color: grey;
+    }
 }

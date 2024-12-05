@@ -153,10 +153,14 @@ main {
 /* Responsividade dos itens */
 
 /* CELULAR */
-@media screen and (max-width: 630px) {
+@media only screen and (max-width: 630px) {
 
     body {
         background-color: var(--color--background);
+    }
+
+    .home-text span {
+        color: var(--color--font);
     }
 
     .home {
@@ -197,11 +201,97 @@ main {
 
     .description--item {
         font-size: 10pt;
+        color: #fff;
     }
 }
 
 /* TABLET */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1008px) {
+
+    .nav--bar .nav--bar--item {
+        display: none;
+    }
+
+    .logo {
+        width: 100%;
+        float: left;
+    }
+
+    .spacing {
+        height: 10px;
+    }
+
+    #mobile--menu {
+        display: none;
+        animation: transition--menu 0.8s ease-in-out;
+    }
+
+    #mobile--btn {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color--button);
+        transition: 0.2s ease-in-out;
+    }
+
+    #mobile--btn .button--options {
+        margin-right: -120px;
+    }
+
+
+    #mobile--menu.active {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        background: #ffffff48;
+        transition: all 0.4s ease-in;
+        margin-top: 70px;
+    }
+
+    #mobile--nav--list {
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
+
+    .btn--m a {
+        color: black;
+        text-decoration: none;
+        transition: all 0.1s ease-out;
+    }
+
+    #mobile--btn:hover {
+        color: var(--color--font);
+    }
+
+    .dropDown--su {
+        list-style: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .drop--btn {
+        font-weight: 500;
+        background: var(--color--font);
+        padding: 0.5rem;
+    }
+
+    body {
+        background:#C2BBB9;
+    }
+
+    .home-text p {
+        color: #f6f3e286;
+    }
+
+    .home-text span {
+        color: #7AA637;
+    }
 
     .text--user--tool {
         width: 95%;
@@ -214,5 +304,9 @@ main {
     .ct-center {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .description--item {
+        color: #fff;
     }
 }

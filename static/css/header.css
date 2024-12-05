@@ -8,6 +8,7 @@
 
 body {
     background-color: var(--color--background--body);
+    font-family: "Josefin Sans", sans-serif;
 }
 
 header {
@@ -31,7 +32,7 @@ header ul li {
 }
 
 header ul li a {
-    display: block; 
+    display: block;
     padding: 15px 15px;
     font-weight: bold;
     text-align: center;
@@ -43,7 +44,7 @@ header ul li ul.dropdown li {
 
 header nav div ul li ul.dropdown {
     width: 200px;
-    background: var(--color--background); 
+    background: var(--color--background);
     border-radius: 5px;
     position: absolute;
     display: none;
@@ -172,7 +173,7 @@ header ul li:hover .dropdown {
     .spacing {
         height: 10px;
     }
-    
+
     #mobile--menu {
         display: none;
         animation: transition--menu 0.8s ease-in-out;

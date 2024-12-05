@@ -16,6 +16,7 @@ def sobre():
 
 
 tabela_moveis = []
+
 # visualizar os objetos de determinada tabela
 @funcoes_route.route('/<int:itens>')
 def listar_itens(itens):

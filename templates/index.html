@@ -33,7 +33,7 @@
         </a>
         <nav class="nav--bar">
             <div class="nav--bar--item">
-                <ul>    
+                <ul>
                     <li><a class="line--bottom" href="{{url_for('funcoes.sobre')}}"> Sobre nós </a></li>
 
                     <li class="line--bottom"> <a href="#"> Suporte </a>
@@ -85,6 +85,23 @@
                         usuário</a>
                 </li>
             </details>
+
+
+            {% if usu: %}
+            <li>
+                <a href="{{ url_for('funcoes.logout') }}" class="btn--login--active">
+                    <button> Sair </button>
+                </a>
+            </li>
+
+            {% else: %}
+            <li>
+                <a href="{{ url_for('funcoes.login') }}" class="btn--login--active">
+                    <button> Login </button>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
 
         </ul>
     </div>
@@ -159,11 +176,10 @@
         <div class="respon">
             <div class="footer--row">
 
-
                 <div class="container-blocos">
 
                     <figure>
-                        <img id="logo-footer" src="../static/images/logo.svg" alt="logotipo">
+                        <img class="logo--footer" src="../static/images/logo.svg" alt="logo - GEP">
                     </figure>
 
                     <div class="bloco-1">
@@ -181,12 +197,14 @@
                     <div class="bloco-2">
                         <img id="contact-img" src="../static/icons/github.png" alt="Github">
                         <ul>
-                            <li>jJoseIlcle14 </li>
+                            <li>JoseIlcle14 </li>
                             <li>patluc15</li>
                             <li>Andr-wq</li>
                             <li>FcoKauan </li>
+                            <li> Victor-Gabriel-marinho</li>
                         </ul>
                     </div>
+
 
                 </div>
 
@@ -221,9 +239,10 @@
             </div>
         </div>
 
-        <hr>
-        <p>© 2024 GEP. Todos os direitos reservados.</p>
 
+        <hr class="line--footer">
+        <p>© 2024 GEP. Todos os direitos reservados.</p>
+    </footer>   
 </body>
 
 </html>
