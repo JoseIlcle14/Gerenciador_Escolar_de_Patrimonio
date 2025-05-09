@@ -3,7 +3,7 @@
   Um projeto escolar desenvolvido com o objetivo de gerenciar os patrimônios, por exemplo cadeiras, mesas e eletrônicos de uma instituição escolar.
 
 ## Visite nosso site
-  <a href= "gerenciadorescolardepatrimonio-production.up.railway.app">ClIQUE AQUI!</a>
+  <a href= "https://gerenciadorescolardepatrimonio-production.up.railway.app">ClIQUE AQUI!</a>
 
 ## Tecnologias utilizadas 
 
